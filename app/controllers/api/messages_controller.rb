@@ -1,5 +1,8 @@
 class Api::MessagesController < ApplicationController
+  before_action :set_post
+
   def index
+    render json: @posts.messages.all
   end
 
   def create
@@ -10,4 +13,11 @@ class Api::MessagesController < ApplicationController
 
   def update
   end
+
+  private
+    def set_post
+      @post = Post.find(params[:posts_id])
+    end
+
+
 end
