@@ -29,13 +29,12 @@ class Api::PostController < ApplicationController
     end
   end
 
-  private
-    def set_post
-      @post = current_user.posts.find(params[:id])
-    end
+private
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
 
     def post_params
-      # { post: { name: 'JavaScript' } }
       params.require(:post).permit(:name)
     end
 end
