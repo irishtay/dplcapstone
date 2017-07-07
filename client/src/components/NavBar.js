@@ -16,9 +16,6 @@ class NavBar extends Component {
           <Link to='/bio'>
             <Menu.Item name='My Bio' />
           </Link>
-          <Link to='/languages'>
-            <Menu.Item name='My Languages' />
-          </Link>
           <Link to='/photos'>
             <Menu.Item name='My photos' />
           </Link>
