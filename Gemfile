@@ -15,10 +15,13 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'will_paginate'
 gem 'api-pagination'
+gem 'geocoder'
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :development do

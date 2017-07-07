@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import user from './user'
 import flash from './flash'
 import languages from './languages';
+import photos from '/photos';
 
 const rootReducer = combineReducers({
   user,

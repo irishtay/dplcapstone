@@ -25,6 +25,7 @@ class App extends Component {
             <Route exact path='/register' component={Register} />
             <ProtectedRoute exact path='/bio' component={Bio} />
             <ProtectedRoute exact path='/languages' component={Languages} />
+            <Route exact path='/photos' component={Photos} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
