@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux'
 import user from './user'
 import flash from './flash'
-import languages from './languages';
-import photos from '/photos';
+import photos from './photos';
+import bio from './bio';
 
 const rootReducer = combineReducers({
   user,
   flash,
-  languages,
+  photos,
+  bio,
 })
 
 export default rootReducer

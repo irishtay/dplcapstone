@@ -20,6 +20,6 @@ class Api::BioController < ApplicationController
 
     def bio_params
       # { bio: { body: 'hello' } }
-      params.require(:bio).permit(:body)
+      params.require(:bio).permit(:name, :age, :zip, :gender)
     end
 end

@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import { setFlash } from '../actions/flash';
-import { setHeaders } from '../actions/headers';
+import { updateBio, getBio } from '../actions/bio';
 import { connect } from 'react-redux';
+import Photos from './Photos'
+
+const genderOption = [
+  { key: 'Male', text: 'Male', value: 'male'},
+  { key: 'Female', text: 'Female', value: 'female'},
+  { key: 'Other', text: 'Other', value: 'other'}
+]
 
 class Bio extends Component {
-  state = { bio: '', edit: false };
+  state = { name: '', age: '', gender: '', zip: '', edit: false };
 
   componentDidMount() {
-    axios.get('/api/bio')
-      .then( res => {
-        this.setState({ bio: res.data.body });
-        this.props.dispatch(setHeaders(res.headers))
-      })
-      .catch( res => {
-        console.log(`Bio GET Fail: ${res}`);
-      });
+    this.props.dispatch(getBio());
   }
 
   toggleEdit = () => {
-    this.setState({ edit: !this.state.edit });
+    const { name, age, zip, gender } = this.props.bio;
+    this.setState({ name, age, zip, gender, edit: !this.state.edit });
   }
 
   displayBio = () => {
@@ -34,37 +35,56 @@ class Bio extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { name, age, zip, gender } = this.state;
     const { dispatch } = this.props;
-
-    axios.put('/api/bio', { bio: { body: this.state.bio } })
-      .then( res => {
-        this.setState({ bio: res.data.body, edit: false });
-        dispatch(setFlash('Bio Updated Successfully!', 'success', { headers: res.headers }));
-      })
-      .catch( res => {
-        dispatch(setFlash('Bio Failed To Update!', 'error'), { headers: res.headers });
-      });
+    dispatch(updateBio(name, age, zip, gender));
+    this.setState({ edit: false })
   }
 
   handleChange = (e) => {
-    this.setState({ bio: e.target.value });
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   }
 
   editBio = () => {
     return(
       <Segment textAlign='center'>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>Editing Bio</label>
-            <textarea
-              value={this.state.bio}
+          <Form.Group widths='equal'>
+            <Form.Input
+              label='Name'
+              placeholder='Name'
+              name='name'
+              value={this.state.name}
               onChange={this.handleChange}
-              placeholder='Your Bio Here!'
             />
-          </Form.Field>
+            <Form.Input
+              label='Age'
+              placeholder='Age'
+              name='age'
+              value={this.state.age}
+              onChange={this.handleChange}
+            />
+            <Form.Input
+              label='Zip Code'
+              placeholder='Zip Code'
+              name='zip'
+              value={this.state.zip}
+              onChange={this.handleChange}
+            />
+            <Form.Select
+              label='Gender'
+              options={genderOption}
+              placeholder='Gender'
+              name='gender'
+              value={this.state.gender}
+              onChange={ (e, data) => this.setState({ gender: data.value }) }
+            />
+          </Form.Group>
           <Button primary type='submit'>Submit</Button>
           <Button onClick={this.toggleEdit}>Cancel</Button>
         </Form>
+        <Photos />
       </Segment>
     )
   }
@@ -79,4 +99,8 @@ class Bio extends Component {
   }
 }
 
-export default connect()(Bio);
+const mapStateToProps = (state) => {
+  return { bio: state.bio }
+}
+
+export default connect(mapStateToProps)(Bio);
