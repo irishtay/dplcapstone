@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     # resources :bio, only: [:show, :update]
     resources :user_sports, only: [:index, :destroy, :create]
     get 'user_post', to: 'posts#user_posts'
-    resources :posts do
-      resources :messages
+    resources :sports do
+      resources :posts do
+        resources :messages
+      end
     end
   end
 

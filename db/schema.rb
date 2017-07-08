@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20170707165052) do
     t.index ["user_id"], name: "index_bios_on_user_id"
   end
 
-  create_table "languages", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_languages_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text "comment"
     t.bigint "user_id"
@@ -63,14 +55,8 @@ ActiveRecord::Schema.define(version: 20170707165052) do
   end
 
   create_table "sports", force: :cascade do |t|
-    t.string "basketball"
-    t.string "tennis"
-    t.string "baseball"
-    t.string "soccer"
-    t.string "golf"
-    t.string "football"
-    t.string "quidditch"
-    t.string "rockclimbing"
+    t.string "name"
+    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,7 +101,6 @@ ActiveRecord::Schema.define(version: 20170707165052) do
   end
 
   add_foreign_key "bios", "users"
-  add_foreign_key "languages", "users"
   add_foreign_key "messages", "posts"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
