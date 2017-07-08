@@ -7,7 +7,7 @@ class Home extends Component {
     return(
       <Segment basic>
         <Header as='h1' textAlign='center'>Home Component</Header>
-        <Map />
+        <Map location={{lat: 234, lng: 234}}/>
       </Segment>
     );
   }
