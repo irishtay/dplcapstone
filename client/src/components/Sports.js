@@ -10,13 +10,14 @@ import {
   Dropdown,
   Divider,
   Button,
+  Segment,
 } from 'semantic-ui-react';
-import { getSports } from '../actions/sports'
+import { getSports } from '../actions/sports';
 
 class Sports extends React.Component {
 
-  componentDidMount () {
-    this.props.dispatch(getSports())
+  componentDidMount() {
+    this.props.dispatch(getSports());
   }
 
   sports = () => {
@@ -24,8 +25,8 @@ class Sports extends React.Component {
     return sports.map( sport => {
       let { id, name, image } = sport;
       return (
-        <Grid.Column key={id} computer={4}>
-          <Card>
+        <Grid.Column key={id} computer={8} tablet={8} mobile={16}>
+          <Card fluid>
             <Image src={image} />
             <Card.Content>
               <Card.Header>
@@ -42,7 +43,14 @@ class Sports extends React.Component {
   }
   render() {
     return(
-      <div>{this.sports()}</div>
+      <Segment basic>
+        <Header as='h1' style={{ color: 'green' }} textAlign='center'>All Sports</Header>
+        <Grid>
+          <Grid.Row>
+            { this.sports() }
+          </Grid.Row>
+        </Grid>
+      </Segment>
     )
   }
 }

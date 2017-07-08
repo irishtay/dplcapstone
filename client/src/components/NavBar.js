@@ -16,8 +16,8 @@ class NavBar extends Component {
           <Link to='/bio'>
             <Menu.Item name='My Bio' />
           </Link>
-          <Link to='/photos'>
-            <Menu.Item name='My photos' />
+          <Link to='/sports'>
+            <Menu.Item name='All Sports' />
           </Link>
           <Menu.Item
             name='Logout'

@@ -5,6 +5,7 @@ export const getSports = () => {
     axios.get('/api/sports')
       .then( res => {
         dispatch({ type: 'SPORTS', sports: res.data })
+        // cb();
       })
   }
 }

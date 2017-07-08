@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Bio from './components/Bio';
 import Flash from './components/Flash';
-import FetchSports from './components/FetchSports';
+import Sports from './components/Sports';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/FetchUser';
@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path='/home' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
-            <Route path="/sports" component={FetchSports} />
+            <ProtectedRoute exact path="/sports" component={Sports} />
             <ProtectedRoute exact path='/bio' component={Bio} />
             <Route component={NoMatch} />
           </Switch>
