@@ -1,4 +1,5 @@
 import { setFlash } from './flash';
+import axios from 'axios'
 
 export const handleUpload = (photo) => {
   return(dispatch) => {
