@@ -7,7 +7,8 @@ import { getSports } from '../actions/sports';
 import { Loader, Segment, Dimmer } from 'semantic-ui-react';
 
 class FetchSports extends React.Component {
-  state = { loaded: false }
+  // TODO: change to false
+  state = { loaded: true }
 
   componentDidMount() {
     this.props.dispatch(getSports(this.setLoaded))

@@ -10,6 +10,7 @@ import Sports from './components/Sports';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/FetchUser';
+import Posts from './components/Posts';
 
 class App extends Component {
   render() {
@@ -23,7 +24,12 @@ class App extends Component {
             <Route exact path='/home' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
+<<<<<<< HEAD
             <ProtectedRoute exact path="/sports" component={Sports} />
+=======
+            <Route path="/sports" component={FetchSports} />
+            <Route path="/posts" component={Posts} />
+>>>>>>> posts
             <ProtectedRoute exact path='/bio' component={Bio} />
             <Route component={NoMatch} />
           </Switch>

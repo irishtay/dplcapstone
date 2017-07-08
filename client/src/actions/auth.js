@@ -10,8 +10,8 @@ export const registerUser = (email, password, passwordConfirmation, history) => 
         history.push('/');
       })
       .catch( res => {
-        const message = res.response.data.errors.full_messages.join(',');
-        dispatch(setFlash(message, 'error'));
+        // const message = res.response.data.errors.full_messages.join(',');
+        // dispatch(setFlash(message, 'error'));
     });
   }
 }

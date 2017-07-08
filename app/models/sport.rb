@@ -1,3 +1,4 @@
 class Sport < ApplicationRecord
-  has_many :usersport
+  has_many :usersports
+  has_many :posts
 end
