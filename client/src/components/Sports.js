@@ -25,8 +25,8 @@ class Sports extends React.Component {
     return sports.map( sport => {
       let { id, name, image } = sport;
       return (
-        <Grid.Column key={id} computer={8} tablet={8} mobile={16}>
-          <Card fluid>
+        <Grid.Column key={id} computer={4} tablet={8} mobile={16}>
+          <Card center>
             <Image src={image} />
             <Card.Content>
               <Card.Header>
