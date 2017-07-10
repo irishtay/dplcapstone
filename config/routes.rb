@@ -15,9 +15,13 @@ Rails.application.routes.draw do
     resources :user_sports, only: [:index, :destroy, :create]
     get 'user_post', to: 'posts#user_posts'
     resources :sports do
-      resources :posts do
-        resources :messages
-      end
+      resources :posts
+    end
+
+    resources :posts
+
+    resources :posts do
+      resources :messages
     end
   end
 

@@ -1,4 +1,4 @@
-class Api::PostController < ApplicationController
+class Api::PostsController < ApplicationController
 
   def index
     render json: Post.all
