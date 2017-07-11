@@ -4,6 +4,11 @@ class Api::PostsController < ApplicationController
     render json: Post.all
   end
 
+  def sport_posts
+    sport = Sport.find(params[:sport_id])
+    render json: sport.posts.all
+  end
+
   def user_posts
     render json: current_user.posts
   end
@@ -29,10 +34,10 @@ class Api::PostsController < ApplicationController
     end
   end
 
-private
-  def set_post
-    @post = current_user.posts.find(params[:id])
-  end
+  private
+    def set_post
+      @post = current_user.posts.find(params[:id])
+    end
 
     def post_params
       params.require(:post).permit(:name)

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :posts
     end
 
+    get 'sport_post/:sport_id/', to: 'posts#sport_posts'
+
     resources :posts
 
     resources :posts do
