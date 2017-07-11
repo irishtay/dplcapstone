@@ -4,6 +4,7 @@ import flash from './flash'
 import photos from './photos';
 import bio from './bio';
 import sports from './sports';
+import posts from './posts';
 
 const rootReducer = combineReducers({
   user,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   photos,
   bio,
   sports,
+  posts,
 })
 
 export default rootReducer

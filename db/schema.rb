@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170708200639) do
     t.string "gender"
     t.string "name"
     t.text "image_url"
-    t.integer "zip"
+    t.string "state"
     t.index ["user_id"], name: "index_bios_on_user_id"
   end
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170708200639) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "post_body"
-    t.integer "zip"
+    t.string "state"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
