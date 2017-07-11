@@ -12,11 +12,12 @@ import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/FetchUser';
 import Posts from './components/Posts';
 import FetchSports from './components/FetchSports';
+import { Segment } from 'semantic-ui-react';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Segment basic style={styles.app}>
         <NavBar />
         <Flash />
         <FetchUser>
@@ -31,8 +32,14 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
-      </div>
+      </Segment>
     );
+  }
+}
+
+const styles = {
+  app: {
+    height: '100vh',
   }
 }
 
