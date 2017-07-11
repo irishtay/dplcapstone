@@ -17,8 +17,6 @@ gem 'will_paginate'
 gem 'api-pagination'
 gem 'geocoder'
 gem 'cloudinary'
-gem 'message_bus'
-# gem 'message_bus'
 
 group :development, :test do
   # Call 'pry' anywhere in the code to stop execution and get a debugger console
