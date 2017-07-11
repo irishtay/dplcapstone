@@ -1,9 +1,42 @@
+// import React from 'react';
+// import MotionMenu from 'react-motion-menu';
+
+// export default () => (
+//   <MotionMenu
+//     type="circle"
+//     margin={120}
+//   >
+//     <div className="button">
+//       <i className="fa fa-bars" />
+//     </div>
+//     <div className="button">
+//       <i className="fa fa-cogs" />
+//     </div>
+//     <div className="button">
+//       <i className="fa fa-cloud" />
+//     </div>
+//     <div className="button">
+//       <i className="fa fa-home" />
+//     </div>
+//   </MotionMenu>
+// );
+
+
+
+
+
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
+
+// const styles = {
+//   color: {
+//     backgroundColor: 'red',
+//   }
+// }
 
 class NavBar extends Component {
   rightNavs = () => {
