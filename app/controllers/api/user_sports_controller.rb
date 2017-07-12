@@ -18,7 +18,7 @@ class Api::UserSportsController < ApplicationController
 private
 
   def user_sport_params
-    params.require(:user_sport).permit(:skill_level, :location, :sport_id, :user_id)
+    params.require(:user_sport).permit(:skill_level, :sport_id, :user_id)
   end
 
 
