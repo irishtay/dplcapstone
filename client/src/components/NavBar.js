@@ -1,86 +1,33 @@
-// import React from 'react';
-// import MotionMenu from 'react-motion-menu';
-
-// export default () => (
-//   <MotionMenu
-//     type="circle"
-//     margin={120}
-//   >
-//     <div className="button">
-//       <i className="fa fa-bars" />
-//     </div>
-//     <div className="button">
-//       <i className="fa fa-cogs" />
-//     </div>
-//     <div className="button">
-//       <i className="fa fa-cloud" />
-//     </div>
-//     <div className="button">
-//       <i className="fa fa-home" />
-//     </div>
-//   </MotionMenu>
-// );
-
-
-
-
-
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
-
-// const styles = {
-//   color: {
-//     backgroundColor: 'red',
-//   }
-// }
+import SideBar from './SideBar';
+import onClickOutside from 'react-onclickoutside';
 
 class NavBar extends Component {
+  state = { visible: false }
+
   rightNavs = () => {
     const { user, dispatch, history } = this.props;
+  }
 
-    if(user.id) {
-      // The user is logged in
-      return(
-        <Menu.Menu position='right'>
-          <Link to='/bio'>
-            <Menu.Item name='My Bio' />
-          </Link>
-          <Link to='/sports'>
-            <Menu.Item name='All Sports' />
-          </Link>
-          <Menu.Item
-            name='Logout'
-            onClick={() => dispatch(handleLogout(history))}
-          />
-        </Menu.Menu>
-      );
-    } else {
-      // The user logged out
-      // show the register and login items
-      return(
-        <Menu.Menu position='right'>
-          <Link to='/register'>
-            <Menu.Item name='Register' />
-          </Link>
-          <Link to='/login'>
-            <Menu.Item name='Login' />
-          </Link>
-        </Menu.Menu>
-      );
-    }
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+
+  handleClickOutside = evt => {
+    this.setState({ visible: !this.state.visible })
   }
 
   render() {
     return (
       <div>
+        <SideBar {...this.state} />
         <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item name='home' />
-          </Link>
+          <Button class='menu-button' basic onClick={this.toggleVisibility}>
+            <Icon name='content' />
+          </Button>
           { this.rightNavs() }
         </Menu>
       </div>
@@ -88,8 +35,8 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { user: state.user }
-}
+// const styles = StyleSheet.create({
+//
+// });
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default onClickOutside(NavBar);
