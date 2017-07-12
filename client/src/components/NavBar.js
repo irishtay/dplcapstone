@@ -75,16 +75,20 @@ class NavBar extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item name='home' />
-          </Link>
-          { this.rightNavs() }
-        </Menu>
-      </div>
-    )
+    if (this.props.location.pathname == '/')
+      return null
+    else {
+      return (
+        <div>
+          <Menu pointing secondary>
+            <Link to='/'>
+              <Menu.Item name='home' />
+            </Link>
+            { this.rightNavs() }
+          </Menu>
+        </div>
+      )
+    }
   }
 }
 

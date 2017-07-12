@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { Header, Segment, Image } from 'semantic-ui-react';
-import { connect } from 'react-redux'
-import backgroundImage from '../images/BackImage2.jpeg';
+import { connect } from 'react-redux';
+import backgroundImage from '../images/soccer-ball-fire2.jpg';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
   render() {
     if(this.props.user) {
       return(
         <Segment basic style={styles.main}>
-
+        <Link to = '/login'>
           <Image
             inline={true}
             style={{verticalAlign: 'middle'}}
-            src='http://res.cloudinary.com/dxvd6262z/image/upload/v1499726505/a2alogo_480_vpsmna.png'
-            size='huge'
+            src='http://res.cloudinary.com/dxvd6262z/image/upload/v1499813182/a2a-white_360_ic2ef7.png'
+            size='large'
             centered
           />
-        </Segment>
+        </Link>
+      </Segment>
       );
     } else {
       return(
@@ -35,13 +37,9 @@ const styles = {
     oBackgroundSize: 'cover',
     backgroundSize: 'cover',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start'
   },
-  logo: {
-    backgroundImage: 'url("http://res.cloudinary.com/dxvd6262z/image/upload/v1499726505/a2alogo_480_vpsmna.png")',
-    backgroundRepeat: 'no-repeat',
-    height: '300px',
-  }
 }
 
 // <Map location={{lat: 234, lng: 234}}/>
