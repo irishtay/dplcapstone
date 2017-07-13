@@ -40,7 +40,7 @@ export const handleLogin = (email, password, history) => {
       .then( res => {
         let { data: { data: user }, headers } = res
         dispatch({ type: 'LOGIN', user, headers });
-        history.push('/sports');
+        history.push('/user_sports');
       })
       .catch( res => {
         // TODO: handle errors for the client

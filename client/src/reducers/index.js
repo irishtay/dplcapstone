@@ -4,6 +4,7 @@ import flash from './flash'
 import photos from './photos';
 import bio from './bio';
 import sports from './sports';
+import user_sports from './usersports';
 
 const rootReducer = combineReducers({
   user,

@@ -17,7 +17,7 @@ class Home extends Component {
       );
     } else {
       return(
-        <div>Log in to see home</div>
+        <div>Log in to Athlete 2 Athlete</div>
       )
     }
   }

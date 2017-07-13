@@ -24,7 +24,7 @@ export const updateSport = (sport) => {
   }
 }
 
-export const deleteSPORT = (id) => {
+export const deleteSport = (id) => {
   return (dispatch) => {
     axios.delete(`/api/sports/${id}`)
       .then( () => dispatch({ type: 'DELETE_SPORT', id }) )

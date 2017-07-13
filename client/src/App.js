@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/FetchUser';
 import Posts from './components/Posts';
 import FetchSports from './components/FetchSports';
+import FetchUserSports from './components/FetchUserSports'
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route path="/sports" component={FetchSports} />
+            <Route path="/usersports" component={FetchUserSports} />
             <Route path="/posts" component={Posts} />
             <ProtectedRoute exact path='/bio' component={Bio} />
             <Route component={NoMatch} />
