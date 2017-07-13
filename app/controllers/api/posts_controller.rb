@@ -1,7 +1,12 @@
-class Api::PostController < ApplicationController
+class Api::PostsController < ApplicationController
 
   def index
     render json: Post.all
+  end
+
+  def sport_posts
+    sport = Sport.find(params[:sport_id])
+    render json: sport.posts.all
   end
 
   def user_posts
@@ -29,10 +34,10 @@ class Api::PostController < ApplicationController
     end
   end
 
-private
-  def set_post
-    @post = current_user.posts.find(params[:id])
-  end
+  private
+    def set_post
+      @post = current_user.posts.find(params[:id])
+    end
 
     def post_params
       params.require(:post).permit(:name)
