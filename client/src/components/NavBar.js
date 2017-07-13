@@ -17,7 +17,7 @@ class NavBar extends Component {
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
   handleClickOutside = evt => {
-    this.setState({ visible: !this.state.visible })
+    this.setState({ visible: false })
   }
 
   render() {
