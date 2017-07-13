@@ -11,12 +11,6 @@ class SideBar extends Component {
         <div>
           {/*<Sidebar.Pushable >*/}
             <Sidebar as={Menu} animation='slide along' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Link to='/'>
-              <Menu.Item name='home'>
-                <Icon name='home' />
-                Home
-              </Menu.Item>
-            </Link>
             <Link to='/bio'>
               <Menu.Item name='id badge'>
                 <Icon name='id badge' />
@@ -27,6 +21,12 @@ class SideBar extends Component {
               <Menu.Item name='soccer'>
                 <Icon name='soccer' />
                 All Sports
+              </Menu.Item>
+            </Link>
+            <Link to='/'>
+              <Menu.Item name='sign out'>
+                <Icon name='sign out' />
+                LogOut
               </Menu.Item>
             </Link>
             </Sidebar>
