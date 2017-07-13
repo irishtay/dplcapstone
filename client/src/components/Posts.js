@@ -12,7 +12,7 @@ class Posts extends React.Component {
     displayPosts = () => {
         return this.props.posts.map( post => {
             return(
-                <div>
+                <div key={post.id}>
                     <h4>{post.title}</h4>
                 </div>
             )

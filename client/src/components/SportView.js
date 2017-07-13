@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Divider, Header, Image, Container, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSportPosts } from '../actions/posts';
+import SportPost from './SportPost';
 
 class SportView extends React.Component {
 
@@ -16,9 +17,15 @@ class SportView extends React.Component {
       return(<div>loading sport</div>)
     }
     console.log(this.props.posts);
+
+    let allPosts = this.props.posts.map( p => {
+      return <SportPost postInfo={ p } />
+    })
+
     return(
       <Container>
         <Header as="h3" textAlign="center">{sport.name}</Header>
+        { allPosts }
       </Container>
     )
   }
