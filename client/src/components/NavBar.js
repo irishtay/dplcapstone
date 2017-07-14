@@ -25,7 +25,7 @@ class NavBar extends Component {
       return null
     else {
       return (
-        <div>
+        <div style={{backgroundColor: "#808080"}}>
           <SideBar {...this.state} />
           <Menu pointing secondary>
             <Button class='menu-button' basic onClick={this.toggleVisibility}>
