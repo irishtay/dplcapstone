@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "react-onclickoutside": "^6.4.0"
-  }
+  "dependencies": {}
 }
