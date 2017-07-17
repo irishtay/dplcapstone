@@ -7,7 +7,7 @@ export const handleUpload = (photo) => {
     data.append(photo.name, photo)
     axios.post('/api/photos', data)
       .then( res => {
-        dispatch({ type: 'ADD_PHOTO', photo: res.data });
+        dispatch({ type: 'ADD_PHOTO', photo: res.data, headers: res.headers });
         dispatch(setFlash('Image Uploaded!', 'success'));
       })
       .catch( res => {
@@ -20,7 +20,7 @@ export const fetchPhotos = () => {
   return(dispatch) => {
     axios.get('/api/photos')
       .then( res => {
-        dispatch({ type: 'SET_PHOTOS', photos: res.data });
+        dispatch({ type: 'SET_PHOTOS', photos: res.data, headers: res.headers });
         dispatch(setFlash('Photos Loaded!', 'success'));
       })
       .catch( res => {

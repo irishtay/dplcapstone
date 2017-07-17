@@ -6,18 +6,18 @@ export const getBio = (cb) => {
   return (dispatch) => {
     axios.get('/api/bio')
       .then( res => {
-        dispatch({ type: 'GET_BIO', bio: res.data })
+        dispatch({ type: 'GET_BIO', bio: res.data, headers: res.headers })
       })
       .catch( res => console.log(`Bio GET Fail: ${res}`) )
   }
 }
 
-export const updateBio = (name, age, zip, gender) => {
+export const updateBio = (name, age, zip, gender, image_url, body) => {
   return (dispatch) => {
-    axios.put('/api/bio', { bio: { name, age, zip, gender } })
+    axios.put('/api/bio', { bio: { name, age, zip, gender, image_url, body } })
       .then( res => {
-        dispatch({ type: 'UPDATE_BIO', bio: res.data })
-        dispatch(setFlash('Bio Updated Successfully!', 'success', { headers: res.headers }));
+        dispatch({ type: 'UPDATE_BIO', bio: res.data, headers: res.headers })
+        dispatch(setFlash('Bio Updated Successfully!', 'success'));
       })
       .catch( res => {
         dispatch(setFlash('Bio Failed To Update!', 'error'), { headers: res.headers });

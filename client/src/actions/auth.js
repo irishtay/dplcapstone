@@ -21,6 +21,7 @@ export const handleLogout = (history) => {
   // dispatch a POJO to log the user out of our redux state
   // push the user with history to the /login route
   return(dispatch) => {
+    console.log(history)
     axios.delete('/api/auth/sign_out')
       .then( res => {
         dispatch({ type: 'LOGOUT' });
@@ -40,7 +41,7 @@ export const handleLogin = (email, password, history) => {
       .then( res => {
         let { data: { data: user }, headers } = res
         dispatch({ type: 'LOGIN', user, headers });
-        history.push('/user_sports');
+        history.push('/bio');
       })
       .catch( res => {
         // TODO: handle errors for the client

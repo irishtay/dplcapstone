@@ -3,8 +3,10 @@ import axios from 'axios';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import { setFlash } from '../actions/flash';
 import { updateBio, getBio } from '../actions/bio';
+import { fetchPhotos } from '../actions/photos';
 import { connect } from 'react-redux';
 import Photos from './Photos'
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 const genderOption = [
   { key: 'Male', text: 'Male', value: 'male'},
@@ -13,21 +15,53 @@ const genderOption = [
 ]
 
 class Bio extends Component {
-  state = { name: '', age: '', gender: '', zip: '', edit: false };
+  state = {  name: '', body: '', age: '', gender: '', zip: '', edit: false };
 
   componentDidMount() {
     this.props.dispatch(getBio());
+    this.props.dispatch(fetchPhotos());
   }
 
   toggleEdit = () => {
-    const { name, age, zip, gender } = this.props.bio;
-    this.setState({ name, age, zip, gender, edit: !this.state.edit });
+    const { name, age, zip, gender,  body } = this.props.bio;
+    this.setState({ name, age, zip, gender,  body, edit: !this.state.edit });
   }
 
   displayBio = () => {
+    let { name, age, gender, zip } = this.props.bio
     return(
       <Segment textAlign='center'>
-        <Header as='h4'>{this.state.bio}</Header>
+
+  <Card>
+    <Card.Content>
+      { this.props.photos.length > 0 &&
+        <Image src={this.props.photos[0].url} />
+      }
+      <Card.Header>
+        {name}
+      </Card.Header>
+
+      <Card.Meta>
+      gender:
+
+        {gender}
+        <br/>
+        age:
+        {age}
+        <br/>
+        zip:
+        {zip}
+
+      </Card.Meta>
+    </Card.Content>
+    <Card.Content extra>
+      <a>
+        <Icon name='user' />
+        22 Friends
+      </a>
+    </Card.Content>
+  </Card>
+
         <Button primary onClick={this.toggleEdit}>Edit Bio</Button>
       </Segment>
     )
@@ -100,7 +134,7 @@ class Bio extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { bio: state.bio }
+  return { bio: state.bio, photos: state.photos  }
 }
 
 export default connect(mapStateToProps)(Bio);

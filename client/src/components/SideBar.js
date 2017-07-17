@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {handleLogout} from '../actions/auth';
+import {withRouter} from 'react-router-dom';
 
 class SideBar extends Component {
     render() {
@@ -23,12 +25,12 @@ class SideBar extends Component {
                 All Sports
               </Menu.Item>
             </Link>
-            <Link to='/'>
+            <button onClick = {() => this.props.dispatch(handleLogout(this.props.history))} >
               <Menu.Item name='sign out'>
                 <Icon name='sign out' />
                 LogOut
               </Menu.Item>
-            </Link>
+            </button>
             </Sidebar>
             <Sidebar.Pusher>
               <Segment basic>
@@ -44,4 +46,4 @@ const mapStateToProps = (state) => {
   return { user: state.user }
 }
 
-export default connect(mapStateToProps)(SideBar);
+export default withRouter(connect(mapStateToProps)(SideBar));
