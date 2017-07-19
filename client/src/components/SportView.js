@@ -18,7 +18,6 @@ class SportView extends React.Component {
     console.log(this.props.posts);
     return(
       <Container>
-        <Link to="/sports">View All Sports</Link>
         <Header as="h3" textAlign="center">{sport.name}</Header>
       </Container>
     )
@@ -26,7 +25,7 @@ class SportView extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  return { 
+  return {
     sport: state.sports.find( a => a.id === parseInt(props.match.params.id )),
     posts: state.posts
   }

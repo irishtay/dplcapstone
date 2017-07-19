@@ -5,7 +5,7 @@ const sports = ( state = [], action ) => {
       return action.sports;
     case 'ADD_SPORT':
       //{ type: 'ADD_SPORT', SPORT: {...} }
-      return [action.sport, ...state];
+      return [...state, action.sport];
     case 'UPDATE_SPORT':
       //{ type: 'UPDATE_SPORT', sport: {...} }
       return state.map( a => {
