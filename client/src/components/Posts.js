@@ -1,6 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { getPosts } from '../actions/posts';
+import {Link} from 'react-router-dom';
+import {
+  Container,
+  Icon,
+  Grid,
+  Header,
+  Card,
+  Image,
+  Dropdown,
+  Divider,
+  Modal,
+  Rating,
+  Button,
+  Segment,
+} from 'semantic-ui-react';
 
 class Posts extends React.Component {
 
@@ -18,12 +33,15 @@ class Posts extends React.Component {
             )
         })
     }
-    
+  
     render () {
         console.log(this.props.posts)
         return (
             <div> 
-                {this.displayPosts()}
+            <Link to='/PostForm'> 
+            New Post
+            </Link>               
+            {this.displayPosts()}
             </div>
         )
     }

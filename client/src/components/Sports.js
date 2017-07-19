@@ -88,6 +88,7 @@ class Sports extends React.Component {
     return(
       <Segment basic>
         <Header as='h1' style={{ color: 'green' }} textAlign='center'>All Sports</Header>
+        <Link to='/PostForm'>Add Post</Link>
         <Grid>
           <Grid.Row>
             { this.sports() }
