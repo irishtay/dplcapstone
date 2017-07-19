@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Header, Segment, Form, Button } from 'semantic-ui-react';
+import { Header, Segment, Form, Button, Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
 
@@ -24,7 +25,7 @@ class Login extends Component {
 
     return(
       <Segment basic>
-        <Header as='h1' textAlign='center'>Login</Header>
+        <Header as='h1' textAlign='center'>Welcome to Athelete 2 Athlete. Please Login.</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Email</label>
@@ -51,6 +52,14 @@ class Login extends Component {
           <Segment textAlign='center' basic>
             <Button primary type='submit'>Submit</Button>
           </Segment>
+          <Segment textAlign='center' basic>
+            <Menu.Menu position='right'>
+              <Link to='/register'>
+              <Menu.Item name="New User Registration" />
+              </Link>
+            </Menu.Menu>
+          </Segment>
+
         </Form>
       </Segment>
     );

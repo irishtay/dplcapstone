@@ -29,7 +29,7 @@ class Register extends Component {
 
     return(
       <Segment basic>
-        <Header as='h1' textAlign='center'>Register Component</Header>
+        <Header as='h1' textAlign='center'>Register New User</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Email</label>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { setFlash } from '../actions/flash';
 
 export const registerUser = (email, password, passwordConfirmation, history) => {
+  
   return(dispatch) => {
     axios.post('/api/auth', { email, password, password_confirmation: passwordConfirmation })
       .then( res => {
@@ -10,6 +11,7 @@ export const registerUser = (email, password, passwordConfirmation, history) => 
         history.push('/');
       })
       .catch( res => {
+
         // const message = res.response.data.errors.full_messages.join(',');
         // dispatch(setFlash(message, 'error'));
     });
