@@ -12,9 +12,9 @@ export const getBio = (cb) => {
   }
 }
 
-export const updateBio = (name, age, zip, gender, image_url, body) => {
+export const updateBio = (name, age, zip, gender, body) => {
   return (dispatch) => {
-    axios.put('/api/bio', { bio: { name, age, zip, gender, image_url, body } })
+    axios.put('/api/bio', { bio: { name, age, zip, gender, body } })
       .then( res => {
         dispatch({ type: 'UPDATE_BIO', bio: res.data, headers: res.headers })
         dispatch(setFlash('Bio Updated Successfully!', 'success'));

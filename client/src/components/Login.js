@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Header, Segment, Form, Button, Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import { Header, Segment, Form, Button, Image, Menu} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -24,8 +24,8 @@ class Login extends Component {
     const { email, password } = this.state;
 
     return(
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Welcome to Athelete 2 Athlete. Please Login.</Header>
+      <Segment inverted basic>
+        <Header as='h1' textAlign='center' style={{ fontFamily: 'Serif' }} >Login</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Email</label>
@@ -61,6 +61,15 @@ class Login extends Component {
           </Segment>
 
         </Form>
+
+        <Segment textAlign='center'>
+              <Image
+                inline={true}
+                src={require('../images/a2alogo_480.png')}
+                size='large'
+                centered
+              />
+        </Segment>
       </Segment>
     );
   }

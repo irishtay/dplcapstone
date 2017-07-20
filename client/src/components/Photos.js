@@ -22,12 +22,12 @@ class Photos extends Component {
   render() {
     return(
       <Segment>
-        <Header as='h2'>All Photos</Header>
+        <Header as='h2'>My Photo</Header>
         <Dropzone
           onDrop={this.onDrop}
           style={{ width: '100%', height: '100px', border: '1px dashed black'}}
         >
-          <Header as='h4'> Click or Drop Photo</Header>
+          <Header as='h5'> Click or Drop Photo</Header>
         </Dropzone>
         { this.displayPhotos()}
       </Segment>
