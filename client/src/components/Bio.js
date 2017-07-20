@@ -6,7 +6,7 @@ import { updateBio, getBio } from '../actions/bio';
 import { fetchPhotos } from '../actions/photos';
 import { connect } from 'react-redux';
 import Photos from './Photos'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Input, Grid } from 'semantic-ui-react'
 
 const genderOption = [
   { key: 'Male', text: 'Male', value: 'male'},
@@ -23,45 +23,50 @@ class Bio extends Component {
   }
 
   toggleEdit = () => {
-    const { name, age, zip, gender,  body } = this.props.bio;
-    this.setState({ name, age, zip, gender,  body, edit: !this.state.edit });
+    const { name, age, zip, gender, body } = this.props.bio;
+    this.setState({ name, age, zip, gender, body, edit: !this.state.edit });
   }
 
   displayBio = () => {
-    let { name, age, gender, zip } = this.props.bio
+    let { name, age, gender, zip, body} = this.props.bio
     return(
       <Segment textAlign='center'>
 
-  <Card>
+<Grid centered>
+  <Card style={styles.bio}>
     <Card.Content>
       { this.props.photos.length > 0 &&
         <Image src={this.props.photos[0].url} />
       }
+
       <Card.Header>
         {name}
       </Card.Header>
 
       <Card.Meta>
-      gender:
-
-        {gender}
+      <a>
+        <Icon name='heterosexual' />
+          {gender}
+      </a>
         <br/>
-        age:
-        {age}
+        Age:
+          {age}
         <br/>
-        zip:
-        {zip}
-
+      <a>
+        <Icon name='marker' />
+          {zip}
+      </a>
+        <br/>
+      <a>
+        About:
+          {body}
+      </a>
       </Card.Meta>
     </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
-    </Card.Content>
   </Card>
+</Grid>
 
+        <br/>
         <Button primary onClick={this.toggleEdit}>Edit Bio</Button>
       </Segment>
     )
@@ -69,9 +74,9 @@ class Bio extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { name, age, zip, gender } = this.state;
+    const { name, age, zip, gender, body } = this.state;
     const { dispatch } = this.props;
-    dispatch(updateBio(name, age, zip, gender));
+    dispatch(updateBio(name, age, zip, gender, body));
     this.setState({ edit: false })
   }
 
@@ -82,9 +87,11 @@ class Bio extends Component {
 
   editBio = () => {
     return(
-      <Segment textAlign='center'>
+      <Segment inverted textAlign='center'>
         <Form onSubmit={this.handleSubmit}>
+
           <Form.Group widths='equal'>
+
             <Form.Input
               label='Name'
               placeholder='Name'
@@ -115,17 +122,28 @@ class Bio extends Component {
               onChange={ (e, data) => this.setState({ gender: data.value }) }
             />
           </Form.Group>
+
+          <Form.Field>
+            <Form.Input
+              label='Body'
+              placeholder='Enter a personal tag...'
+              name='body'
+              value={this.state.body}
+              onChange={ (e, data) => this.setState({ body: data.value }) }
+            />
+          </Form.Field>
+
           <Button primary type='submit'>Submit</Button>
           <Button onClick={this.toggleEdit}>Cancel</Button>
         </Form>
-        <Photos />
+        <Photos/>
       </Segment>
     )
   }
 
   render() {
     return(
-      <Segment basic>
+      <Segment inverted basic>
         <Header as='h1' textAlign='center'>My Bio</Header>
         { this.state.edit ? this.editBio() : this.displayBio() }
       </Segment>
@@ -136,5 +154,10 @@ class Bio extends Component {
 const mapStateToProps = (state) => {
   return { bio: state.bio, photos: state.photos  }
 }
+
+const styles = {
+  bio: { width: '500px'}
+}
+
 
 export default connect(mapStateToProps)(Bio);

@@ -9,6 +9,18 @@ export const getPosts = () => {
   }
 }
 
+export const handlePostForm = (title, post_body, state, sport_id) => {
+  return(dispatch) => {
+    axios.post('api/posts', { title, post_body, state, sport_id  })
+    .then(function (response) {
+    console.log(response);
+    })
+    .catch(function (error) {
+    console.log(error);
+  });
+  }
+}
+
 export const getSportPosts = (sport_id) => {
   return(dispatch) => {
     console.log(sport_id)
