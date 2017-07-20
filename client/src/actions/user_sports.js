@@ -15,7 +15,6 @@ export const addUserSport = (user_sport) => {
   return (dispatch) => {
     axios.post('/api/user_sports', { user_sport })
       .then( res => {
-        console.log(res.data)
         dispatch({ type: 'ADD_USER_SPORT', user_sport: res.data, headers: res.headers })
       })
   }
