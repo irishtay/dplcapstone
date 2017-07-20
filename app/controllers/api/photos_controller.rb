@@ -15,6 +15,8 @@ class Api::PhotosController < ApplicationController
 
     cloud_photo = Cloudinary::Uploader.upload(photo, auth)
     photo = Photo.create!(url: cloud_photo['url'])
+    #update bio image url
+    # send back the bio to actions
     render json: photo
   end
 end
