@@ -70,10 +70,10 @@ class PostForm extends React.Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>Select Sport</label>
-                        <Dropdown 
-                            placeholder='Select Sport' 
-                            fluid 
-                            selection 
+                        <Dropdown
+                            placeholder='Select Sport'
+                            fluid
+                            selection
                             options={sportOptions}
                             onChange={ (e, data) => this.setState({ sport_id: data.value })}
                         />
@@ -120,4 +120,4 @@ class PostForm extends React.Component {
   }
 }
 
-export default connect() (PostForm);
+export default connect()(PostForm);

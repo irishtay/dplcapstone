@@ -144,7 +144,7 @@ class Bio extends Component {
   render() {
     return(
       <Segment inverted basic>
-        <Header as='h1' textAlign='center'>My Bio</Header>
+        <Header as='h1' textAlign='center' style={{ fontFamily: 'Impact' }}>---- My Bio ----</Header>
         { this.state.edit ? this.editBio() : this.displayBio() }
       </Segment>
     );

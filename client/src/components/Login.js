@@ -25,10 +25,10 @@ class Login extends Component {
 
     return(
       <Segment inverted basic>
-        <Header as='h1' textAlign='center' style={{ fontFamily: 'Serif' }} >Login</Header>
+        <Header as='h1' textAlign='center' style={{ fontFamily: 'Impact' }} >---- Login ----</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
-            <label>Email</label>
+            <label style={{ color: 'white'}}>Email</label>
             <input
               autoFocus
               required
@@ -39,7 +39,7 @@ class Login extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Password</label>
+            <label style={{ color: 'white'}}>Password</label>
             <input
               required
               id='password'

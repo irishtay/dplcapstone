@@ -22,7 +22,7 @@ class Photos extends Component {
   render() {
     return(
       <Segment>
-        <Header as='h2'>My Photo</Header>
+        <Header as='h2' style={{ fontFamily: 'Impact' }}>---- My Photo ----</Header>
         <Dropzone
           onDrop={this.onDrop}
           style={{ width: '100%', height: '100px', border: '1px dashed black'}}
