@@ -15,8 +15,7 @@ import {
   Button,
   Segment,
 } from 'semantic-ui-react';
-import { getUserSports } from '../actions/user_sports';
-import { deleteUserSport } from '../actions/user_sports';
+import { getUserSports, deleteUserSport } from '../actions/user_sports';
 
 class UserSports extends React.Component {
 
@@ -38,6 +37,7 @@ class UserSports extends React.Component {
 
 sports = () => {
     let { sports } = this.props;
+    debugger;
     return sports.map( sport => {
       let { id, name, image, skill_level } = sport;
       return (
@@ -48,7 +48,7 @@ sports = () => {
                 { name }
               </Card.Header>
             </Card.Content>
-          <Link to={`/user_sports/${id}`}>
+          <Link to={`/sports/${id}`}>
             <Image src={image}/>
           </Link>
           <Card.Content extra>
@@ -65,17 +65,25 @@ sports = () => {
                   <p>Are you sure you want to unsubscribe from { this.state.activeSport.name }?</p>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button color='red' id={this.state.activeSport.id} onClick={ (e) => this.handleCancel(e) } inverted >
-                    <Icon name='x' /> Cancel
+                  <Button color='red'
+                    id={this.state.activeSport.id}
+                    onClick={ (e) => this.handleCancel(e) }
+                    inverted
+                  >
+                  <Icon name='x' /> Cancel
                   </Button>
-                  <Button color='red' id={this.state.activeSport.id} onClick={ (e) => this.handleClose(e) } inverted >
-                    <Icon name='user x' /> Unsubscribe
+                  <Button color='red'
+                    id={this.state.activeSport.id}
+                    onClick={ (e) => this.handleClose(e) }
+                    inverted
+                  >
+                  <Icon name='user x' /> Unsubscribe
                   </Button>
                 </Modal.Actions>
               </Modal>
               <Button basic color='white' >
                 <Icon name='talk' size='large' />
-                <Link to={`/user_sports/${id}`}>ViewPosts</Link>
+                <Link to={`/sports/${id}`}>ViewPosts</Link>
               </Button>
             </div>
           </Card.Content>

@@ -25,6 +25,13 @@ class SideBar extends Component {
                 All Sports
               </Menu.Item>
             </Link>
+            <Link to='/user_sports'>
+              <Menu.Item name='checkmark'>
+                <Icon name='checkmark' />
+                Favorite Sports
+              </Menu.Item>
+            </Link>
+
             <button onClick = {() => this.props.dispatch(handleLogout(this.props.history))} >
               <Menu.Item name='sign out'>
                 <Icon name='sign out' />
