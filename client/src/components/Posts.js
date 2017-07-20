@@ -27,9 +27,31 @@ class Posts extends React.Component {
     displayPosts = () => {
         return this.props.posts.map( post => {
             return(
-                <div key={post.id}>
+                
+    <Card>
+      <Card.Content>
+        <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
+        <Card.Header>
+         <div key={post.id}>
                     <h4>{post.title}</h4>
                 </div>
+        </Card.Header>
+        <Card.Meta>
+          <div key={post.id}>
+                    <h4>{post.state}</h4>
+                </div>
+        </Card.Meta>
+        <Card.Description>
+          {post.user_id} posted: <strong> {post.post_body}</strong>
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <div className='ui two buttons'>
+          <Button basic color='green'>Edit</Button>
+          <Button basic color='red'>Delete</Button>
+        </div>
+      </Card.Content>
+    </Card>
             )
         })
     }

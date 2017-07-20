@@ -9,12 +9,13 @@ export const getPosts = () => {
   }
 }
 
-export const handlePostForm = (title, post_body, state, sport_id) => {
+export const handlePostForm = (title, post_body, state, sport_id, history) => {
   return(dispatch) => {
     axios.post('api/posts', { title, post_body, state, sport_id  })
-    .then(function (response) {
-    console.log(response);
+    .then( res => {
+      dispatch({ type: 'ADD_POST', post: res.data, headers: res.headers })
     })
+    .then( history.push(`/sports/${sport_id}`) )
     .catch(function (error) {
     console.log(error);
   });
