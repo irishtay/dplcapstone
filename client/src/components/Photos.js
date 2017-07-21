@@ -9,20 +9,20 @@ class Photos extends Component {
     this.props.dispatch(fetchPhotos());
   }
 
-  onDrop = (photos) => {
+ onDrop = (photos) => {
     this.props.dispatch(handleUpload(photos[0]));
   }
 
-  displayPhotos = () => {
+ displayPhotos = () => {
     return this.props.photos.map( photo => {
       return(<Image size='big' key={photo.id} src={photo.url} alt={photo} />);
     });
   }
 
-  render() {
+ render() {
     return(
       <Segment>
-        <Header as='h2' style={{ fontFamily: 'Impact' }}>---- My Photo ----</Header>
+        <Header as='h2' style={{ fontFamily: 'Rock Salt' }}>---- My Photo ----</Header>
         <Dropzone
           onDrop={this.onDrop}
           style={{ width: '100%', height: '100px', border: '1px dashed black'}}

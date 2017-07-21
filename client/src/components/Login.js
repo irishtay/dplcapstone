@@ -25,7 +25,7 @@ class Login extends Component {
 
     return(
       <Segment inverted basic>
-        <Header as='h1' textAlign='center' style={{ fontFamily: 'Impact' }} >---- Login ----</Header>
+        <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }} >---- Login ----</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label style={{ color: 'white'}}>Email</label>

@@ -1,11 +1,11 @@
 class Api::BioController < ApplicationController
   before_action :set_bio
 
-  def show
+ def show
     render json: @bio
   end
 
-  def update
+ def update
     if @bio.update(bio_params)
       render json: @bio
     else
@@ -13,12 +13,12 @@ class Api::BioController < ApplicationController
     end
   end
 
-  private
+ private
     def set_bio
       @bio = current_user.bio
     end
 
-    def bio_params
+   def bio_params
       # { bio: { body: 'hello' } }
       params.require(:bio).permit(:name, :age, :zip, :gender, :body, :image_url)
     end

@@ -1,4 +1,5 @@
 class Api::UserSportsController < ApplicationController
+
   def index
     user_sports = []
     Usersport.where(user_id: current_user.id).each do |user_sport|
