@@ -1,17 +1,25 @@
 import React from 'react';
 import { Button, Form, Segment, Header, Dropdown } from 'semantic-ui-react'
-import { handlePostForm } from '../actions/posts';
+import { handlePostForm, updatePost } from '../actions/posts';
 import { connect } from 'react-redux'
 
 class PostForm extends React.Component {
     state = { title: '', post_body: '', state: '', sport_id: '' }
 
+    componentDidMount() {
+        if (this.props.postInfo)
+          this.setState({ ...this.props.postInfo })
+    }
+
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { title, post_body, state, sport_id } = this.state;
-    this.props.dispatch(handlePostForm(title, post_body, state, sport_id, this.props.history))
+    const { title, post_body, state, sport_id, id } = this.state;
+      if (id)
+        this.props.dispatch(updatePost(title, post_body, state, sport_id, id, this.props.toggleEdit ))
+      else
+        this.props.dispatch(handlePostForm(title, post_body, state, sport_id, this.props.history))
   }
 
   handleChange = (e) => {

@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+  before_action :set_post, only: [:destroy, :update]
 
   def index
     render json: Post.all
@@ -28,7 +29,7 @@ class Api::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      render json: current_user.post, notice: "Post Updated"
+      render json: @post, notice: "Post Updated"
     else
       render json: {errors: post.errors.full_messages }, status: :bad_request
     end
