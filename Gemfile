@@ -8,6 +8,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Devise - User Authentication
+gem 'redis', '~> 3.0'
 gem 'devise'
 # Devise Token Authentication
 gem 'devise_token_auth'
@@ -17,6 +18,7 @@ gem 'will_paginate'
 gem 'api-pagination'
 gem 'geocoder'
 gem 'cloudinary'
+gem 'message_bus', git: 'git@github.com:SamSaffron/message_bus.git'
 
 group :development, :test do
   # Call 'pry' anywhere in the code to stop execution and get a debugger console
