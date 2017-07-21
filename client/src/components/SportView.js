@@ -23,8 +23,8 @@ class SportView extends React.Component {
     })
 
     return(
-      <Container>
-        <Header as="h3" textAlign="center">{sport.name}</Header>
+      <Container textAlign="center">
+        <Header as="h3">{sport.name}</Header>
         <Link to='/PostForm'>Add Post </Link>
         <Link to='/Sports'> All Sports </Link>
         <Link to='/Posts'> All Posts</Link>
