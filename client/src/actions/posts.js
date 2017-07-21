@@ -11,7 +11,7 @@ export const getPosts = () => {
 
 export const handlePostForm = (title, post_body, state, sport_id, history) => {
   return(dispatch) => {
-    axios.post('api/posts', { title, post_body, state, sport_id  })
+    axios.post('/api/posts', { title, post_body, state, sport_id  })
     .then( res => {
       dispatch({ type: 'ADD_POST', post: res.data, headers: res.headers })
     })
