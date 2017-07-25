@@ -7,11 +7,11 @@ export const addMessage = (message) => {
   }
 }
 
-export const fetchMessages = () => {
+export const fetchMessages = (post_id) => {
   return(dispatch) => {
-    axios.get('/api/messages')
+    axios.get(`/api/posts/{post_id}/messages`)
       .then( res => {
-        dispatch({ type: 'SET_MESSAGES', messages: res.data });
+        dispatch({ type: 'SET_MESSAGES', messages: res.data, post_id: post_id });
       })
       .catch( error => {
         console.log(error);

@@ -1,16 +1,19 @@
 class Api::MessagesController < ApplicationController
-  before_action :set_post
+  # before_action :set_post
 
   def index
-    render json: @posts.messages.all
+    post = Post.find(params[:post_id])
+    render json: post.messages.all
   end
 
   def create
-    message = current_user.messages.new(message_params)
+    post = Post.find(params[:post_id])
+    message = current_user.message.new(message_params)
+    message.post_id = post.id
     if message.save
-      render json: message
+      MessageBus.publish "/chat_channel/#{:message.post_id}", { comment: messages.comment }
     else
-      render json: {errors: message.errors.full_messages }, status: :bad_request
+      render json: { error: 'Error creating message' }, status: :bad_request
     end
   end
 
@@ -27,14 +30,14 @@ class Api::MessagesController < ApplicationController
   end
 
   private
-    def set_post
-      @message = Message.find(params[:messages_id])
-    end
+    # def set_post
+    #   @message = Message.find(params[:messages_id])
+    # end
 
   def message_params
       # { post: { name: 'JavaScript' } }
       params.require(:message).permit(:comment, :post_id)
-    end
+  end
 
 
 end

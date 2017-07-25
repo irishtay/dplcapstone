@@ -1,12 +1,15 @@
 class Api::MessagesController < ApplicationController
   def all_messages
-    render json: ChatMessage.all
+    post = Post.find
+    render json: post.messages.all
   end
 
   def create
-    message = ChatMessage.new(chat_message_params)
+    post = Post.find(params(:post_id))
+    messages = current_user.messages.new(messages_params)
+    messages.post_id = post.id
     if message.save
-      MessageBus.publish '/chat_channel', { email: message.email, body: message.body }
+      MessageBus.publish "/chat_channel/#{:post_id}", { comment: messages.comment }
     else
       render json: { error: 'Error creating message' }, status: :bad_request
     end
@@ -15,6 +18,6 @@ class Api::MessagesController < ApplicationController
   private
     def chat_message_params
       # { chat_message: { email: 'jake@test.com', body: 'test' } }
-      params.require(:chat_message).permit(:email, :body)
+      params.require(:messages).permit(:comment)
     end
 end

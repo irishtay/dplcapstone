@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setFlash } from '../actions/flash';
 import { addMessage, fetchMessages } from '../actions/messages';
 import { Segment, Header, Form, TextArea, Button, Icon } from 'semantic-ui-react';
-import ChatMessage from './ChatMessage';
+import ChatMessage from './ChatMessages';
 import axios from 'axios';
 
 class ChatWindow extends Component {
@@ -14,7 +14,7 @@ class ChatWindow extends Component {
     dispatch(setFlash('Welcome To React Chat!', 'success'));
     dispatch(fetchMessages());
 
-    window.MessageBus.subscribe('/chat_channel', data => {
+    window.MessageBus.subscribe('/chat_channel/1', data => {
       dispatch(addMessage(data));
       this.scrollToBottom('chat-window');
     });
@@ -56,8 +56,8 @@ class ChatWindow extends Component {
   }
 
   addMessage = () => {
-    const { user: { email }, dispatch } = this.props;
-    axios.post('/api/messages', { chat_message: { email, body: this.state.newMessage }})
+    const { messages: { comment, post_id }, dispatch, post } = this.props;
+    axios.post(`/api/posts/{post_id}/messages`, { messages: { comment: this.state.newMessage, post_id: post_id }})
       .then( res => {
         this.setState({ newMessage: '' });
       })
