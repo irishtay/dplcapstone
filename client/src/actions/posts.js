@@ -28,7 +28,7 @@ export const updatePost = (title, post_body, state, sport_id, id, cb) => {
     .then( res => {
       dispatch({ type: 'UPDATE_POST', post: res.data, headers: res.headers })
     })
-    .then( cb() )
+    // .then( cb() )
     .catch(function (error) {
     console.log(error);
   });

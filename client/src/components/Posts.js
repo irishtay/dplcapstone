@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { getPosts } from '../actions/posts';
+import { getPosts, deletePost, updatePost } from '../actions/posts';
 import {Link} from 'react-router-dom';
 import {
   Container,
@@ -16,21 +16,43 @@ import {
   Button,
   Segment,
 } from 'semantic-ui-react';
+import PostForm from './PostForm'
 
 class Posts extends React.Component {
+    state = { editing: [] }
 
     componentDidMount() {
         this.props.dispatch(getPosts());
     }
 
+    deletePost = (id) => {
+        this.props.dispatch(deletePost(id));  
+    }
+
+    toggleEdit = (id) => {
+        let { editing } = this.state;
+        let data = [];
+        if (editing.includes(id))
+          data = editing.filter( el => el !== id )
+        else
+          data = [...editing, id]
+        
+        this.setState({ editing: data })
+    }
 
     displayPosts = () => {
+        let { editing } = this.state;
         return this.props.posts.map( post => {
             return(
                 
-    <Card>
+    <Card key={post.id}>
+        { editing.includes(post.id) ? 
+            <PostForm cancel={this.toggleEdit} postInfo={post} />
+            :
+      <div>
       <Card.Content>
         <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
+        
         <Card.Header>
          <div key={post.id}>
                     <h4>{post.title}</h4>
@@ -47,10 +69,24 @@ class Posts extends React.Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green'>Edit</Button>
-          <Button basic color='red'>Delete</Button>
+          <Button 
+                basic color='green'
+                className='postEdit'
+                onClick={() => this.toggleEdit(post.id)}
+                >
+                Edit
+                </Button>
+          <Button 
+                basic color='red'
+                className='postDelete'
+                onClick={() => this.deletePost(post.id)}
+                >
+                Delete
+                </Button>
         </div>
       </Card.Content>
+      </div>
+        }
     </Card>
             )
         })
