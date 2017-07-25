@@ -28,7 +28,7 @@ class PostForm extends React.Component {
   }
 
     render () {
-        const { title, post_body, state, sport_id } = this.state;
+        const { title, post_body, state, sport_id, id } = this.state;
 
         const sportOptions = [
             {
@@ -74,7 +74,7 @@ class PostForm extends React.Component {
 ]
         return (
             <Segment basic>
-                <Header as='h1' textAlign='center'>New PostForm</Header>
+                <Header as='h1' textAlign='center'>{ id ? "Edit Post" : "New Post"}</Header>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>Select Sport</label>
@@ -121,6 +121,7 @@ class PostForm extends React.Component {
                     </Form.Field>
                 <Segment textAlign='center' basic>
                 <Button primary type='submit'>Submit</Button>
+                { id && <Button type="button" onClick={() => this.props.cancel(id)}>Cancel</Button> }
                 </Segment>
         </Form>
       </Segment>
