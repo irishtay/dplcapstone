@@ -28,3 +28,10 @@ export const fetchPhotos = () => {
     });
   }
 }
+
+export const deletePhoto = (id) => {
+ return(dispatch) => {
+   axios.delete(`/api/photos/${id}`)
+     .then( res => dispatch({ type: 'REMOVE_PHOTO', id,  headers: res.headers }))
+ }
+}

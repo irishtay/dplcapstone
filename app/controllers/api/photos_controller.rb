@@ -1,4 +1,5 @@
 class Api::PhotosController < ApplicationController
+  # TODO: BIO has many photos if you wanted your bios to be associated with photos
   def index
     render json: Photo.all
   end
@@ -18,5 +19,10 @@ class Api::PhotosController < ApplicationController
     #update bio image url
     # send back the bio to actions
     render json: photo
+  end
+
+  def destroy
+    # LATER: use the cloudinary gem to delete the photo
+    Photo.find(params[:id]).destroy
   end
 end

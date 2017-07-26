@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Segment, Image, Menu, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import backgroundImage from '../images/Greyback.png';
+import backgroundImage from '../images/backgroundpic-a2a_720.png';
 import {Link} from 'react-router-dom';
 
 class Home extends Component {
@@ -13,7 +13,7 @@ class Home extends Component {
           <Image
             inline={true}
             style={{verticalAlign: 'middle'}}
-            src='http://res.cloudinary.com/dxvd6262z/image/upload/v1499813182/a2a-white_360_ic2ef7.png'
+            //src='http://res.cloudinary.com/dxvd6262z/image/upload/v1499813182/a2a-white_360_ic2ef7.png'
             size='medium'
             centered
           />
