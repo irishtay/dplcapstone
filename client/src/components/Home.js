@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Segment, Image } from 'semantic-ui-react';
+import { Header, Segment, Image, Menu, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import backgroundImage from '../images/soccer-ball-fire2.jpg';
+import backgroundImage from '../images/Greyback.png';
 import {Link} from 'react-router-dom';
 
 class Home extends Component {
@@ -14,11 +14,19 @@ class Home extends Component {
             inline={true}
             style={{verticalAlign: 'middle'}}
             src='http://res.cloudinary.com/dxvd6262z/image/upload/v1499813182/a2a-white_360_ic2ef7.png'
-            size='large'
+            size='medium'
             centered
           />
         </Link>
-      </Segment>
+
+        <Container>
+          <Link to='/login'>
+            <Menu.Item name="ENTER" style={{ fontFamily: 'Rock Salt', color: 'white', display: 'flex', justifyContent: 'flex-end' }}/>
+          </Link>
+        </Container>
+
+
+        </Segment>
       );
     } else {
       return(
@@ -37,7 +45,6 @@ const styles = {
     oBackgroundSize: 'cover',
     backgroundSize: 'cover',
     display: 'flex',
-    alignItems: 'flex-end',
     justifyContent: 'flex-start'
   },
 }
