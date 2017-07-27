@@ -37,7 +37,6 @@ class UserSports extends React.Component {
 
 sports = () => {
     let { sports } = this.props;
-    debugger;
     return sports.map( sport => {
       let { id, name, image, skill_level } = sport;
       return (
