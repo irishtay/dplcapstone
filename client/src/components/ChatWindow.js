@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import { setFlash } from '../actions/flash';
 import { addMessage, fetchMessages } from '../actions/messages';
 import { Segment, Header, Form, TextArea, Button, Icon } from 'semantic-ui-react';
-<<<<<<< HEAD
-import ChatMessage from './ChatMessage';
-=======
 import ChatMessage from './ChatMessages';
->>>>>>> massagebus
 import axios from 'axios';
 
 class ChatWindow extends Component {
@@ -16,15 +12,10 @@ class ChatWindow extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(setFlash('Welcome To React Chat!', 'success'));
-<<<<<<< HEAD
     dispatch(fetchMessages());
-
-    window.MessageBus.subscribe('/chat_channel', data => {
-=======
     dispatch(fetchMessages(this.props.match.params.post_id));
 
     window.MessageBus.subscribe('/chat_channel/1', data => {
->>>>>>> massagebus
       dispatch(addMessage(data));
       this.scrollToBottom('chat-window');
     });
@@ -66,14 +57,9 @@ class ChatWindow extends Component {
   }
 
   addMessage = () => {
-<<<<<<< HEAD
-    const { user: { email }, dispatch } = this.props;
-    axios.post('/api/messages', { chat_message: { email, body: this.state.newMessage }})
-=======
     const { messages: { comment }, dispatch, post, match: { params: { post_id } } } = this.props;
 
     axios.post(`/api/posts/${post_id}/messages`, { message: { comment: this.state.newMessage, post_id: post_id }})
->>>>>>> massagebus
       .then( res => {
         this.setState({ newMessage: '' });
       })
@@ -86,13 +72,10 @@ class ChatWindow extends Component {
     this.setState({ newMessage: e.target.value });
   }
 
-<<<<<<< HEAD
-=======
   // submitMessage = (e) => {
   //
   // }
 
->>>>>>> massagebus
   render() {
     return(
       <Segment basic>
@@ -107,10 +90,7 @@ class ChatWindow extends Component {
             <TextArea
               value={ this.state.newMessage }
               onChange={ this.setMessage }
-<<<<<<< HEAD
-=======
               onKeyUp={this.submitMessage}
->>>>>>> massagebus
               placeholder='Write Your Chat Message Here!'
               autoFocus
               required
