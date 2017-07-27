@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleUpload, fetchPhotos } from '../actions/photos';
-import { Segment, Image, Divider, Header } from 'semantic-ui-react';
+import { handleUpload, fetchPhotos, deletePhoto } from '../actions/photos';
+import { Segment, Image, Divider, Header, Button } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 
 class Photos extends Component {
@@ -13,9 +13,20 @@ class Photos extends Component {
     this.props.dispatch(handleUpload(photos[0]));
   }
 
+  deletePhoto = (id) => {
+    this.props.dispatch(deletePhoto(id));
+  }
+
  displayPhotos = () => {
+    // TODO: onClick on the button will dispatch the delete photo action
     return this.props.photos.map( photo => {
-      return(<Image size='big' key={photo.id} src={photo.url} alt={photo} />);
+      return(
+        <Segment basic>
+          <Image centered size='big' key={photo.id} src={photo.url} alt={photo} />
+          <Divider hidden />
+          <Button onClick={() => this.deletePhoto(photo.id)} primary type='button'>Delete</Button>
+        </Segment>
+      );
     });
   }
 

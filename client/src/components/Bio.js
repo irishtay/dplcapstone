@@ -14,16 +14,17 @@ const genderOption = [
 ]
 class Bio extends Component {
   state = {  name: '', body: '', age: '', gender: '', st: '', edit: false };
+
   componentDidMount() {
     this.props.dispatch(getBio());
     this.props.dispatch(fetchPhotos());
   }
   toggleEdit = () => {
-    const { name, age, st, gender, body } = this.props.bio;
-    this.setState({ name, age, st, gender, body, edit: !this.state.edit });
+    const { name, age, state, gender, body } = this.props.bio;
+    this.setState({ name, age, st: state, gender, body, edit: !this.state.edit });
   }
   displayBio = () => {
-    let { name, age, gender, st, body} = this.props.bio
+    let { name, age, gender, state, body} = this.props.bio
     return(
       <Segment textAlign='center'>
 <Grid centered>
@@ -46,7 +47,7 @@ class Bio extends Component {
         <br/>
       <a>
         <Icon name='marker' />
-          {st}
+          {state}
       </a>
         <br/>
       <a>
@@ -95,7 +96,7 @@ class Bio extends Component {
             <Form.Input
               label='State'
               placeholder='State'
-              name='State'
+              name='st'
               value={this.state.st}
               onChange={this.handleChange}
             />

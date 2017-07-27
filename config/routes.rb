@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'photos', to: 'photos#index'
     # POST /api/photos
     post 'photos', to: 'photos#create'
+    # DELETE /api/photos
+    delete 'photos/:id', to: 'photos#destroy'
     # resources :bio, only: [:show, :update]
     resources :user_sports, only: [:index, :destroy, :create]
     get 'user_post', to: 'posts#user_posts'
