@@ -51,7 +51,7 @@ class Posts extends React.Component {
             :
       <div>
       <Card.Content>
-        <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
+        {/*{<Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />*/}
         
         <Card.Header>
          <div key={post.id}>

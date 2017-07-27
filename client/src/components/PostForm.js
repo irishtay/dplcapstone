@@ -19,7 +19,7 @@ class PostForm extends React.Component {
 
     const { title, post_body, st, sport_id, id } = this.state;
       if (id)
-        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, this.props.toggleEdit ))
+        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, this.props.cancel(id) ))
       else
         this.props.dispatch(handlePostForm(title, post_body, st, sport_id, this.props.history))
   }
@@ -67,6 +67,11 @@ class PostForm extends React.Component {
         text: 'CT',
         value: 'CT',
         id: 'CT'
+       },
+       {
+        text: 'DC',
+        value: 'DC',
+        id: 'DC'
        },
        {
         text: 'DE',
@@ -294,48 +299,6 @@ class PostForm extends React.Component {
             }
         });
         
-//         [
-//             {
-//                 text: 'Baseball',
-//                 value: '1',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533016/BaseballCard_xnqnrj.png' },
-//             },
-//             {
-//                 text: 'Basketball',
-//                 value: '2',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533023/BasketBallCard_k0ctzv.png' },
-//             },
-//             {
-//                 text: 'Football',
-//                 value: '3',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533110/FootballCard_yxvsqf.png' },
-//             },
-//             {
-//                 text: 'Golf',
-//                 value: '4',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533097/GolfCard_cbfal8.png' },
-//             },
-//             {
-//                 text: 'Quidditch',
-//                 value: '5',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533066/QuiddichCard_hjtlqc.png' },
-//             },
-//             {
-//                 text: 'Rockclimbing',
-//                 value: '6',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533081/RockClimbingCard_otga6x.png' },
-//             },
-//             {
-//                 text: 'Soccer',
-//                 value: '7',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533102/SoccerCard2_rtlpwn.png' },
-//             },
-//             {
-//                 text: 'Tennis',
-//                 value: '8',
-//                 image: { avatar: true, src: 'http://res.cloudinary.com/dxvd6262z/image/upload/v1499533114/TennisCard_vm9cwy.png' },
-//             },
-// ]
         return (
             <Segment basic>
                 <Header as='h1' textAlign='center'>{ id ? "Edit Post" : "New Post"}</Header>
@@ -362,18 +325,6 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
-                        <label>Description</label>
-                        
-                        <input
-                            required
-                            id='post_body'
-                            value={post_body}
-                            placeholder='Post'
-                            type='post_body'
-                            onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
                         <label>State</label>
                         <Dropdown
                             placeholder='Select State'
@@ -381,6 +332,17 @@ class PostForm extends React.Component {
                             selection
                             options={stateOptions}
                             onChange={ (e, data) => this.setState({ st: data.value })}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Description</label>
+                        <input
+                            required
+                            id='post_body'
+                            value={post_body}
+                            placeholder='Post'
+                            type='post_body'
+                            onChange={this.handleChange}
                         />
                     </Form.Field>
                 <Segment textAlign='center' basic>
