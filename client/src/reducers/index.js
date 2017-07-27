@@ -7,6 +7,7 @@ import sports from './sports';
 import usersports from './usersports';
 import posts from './posts';
 import messages from './messages';
+import userList from './userList';
 
 const rootReducer = combineReducers({
   user,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   posts,
   messages,
   usersports,
+  userList,
 })
 
 export default rootReducer

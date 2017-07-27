@@ -24,13 +24,30 @@ class Users extends React.Component {
     this.props.dispatch(getUsers());
   }
 
+<<<<<<< HEAD
+=======
+  displayUsers = () => {
+    return this.props.users.map(user => {
+      return(
+        <Segment>
+          { user.email }
+        </Segment>
+      );
+    });
+  }
+
+>>>>>>> user to user start
   render() {
     return(
       <Segment basic>
         <Header as='h1' style={{ color: 'blue' }} textAlign='center'>Users!</Header>
         <Grid>
           <Grid.Row>
+<<<<<<< HEAD
             { this.users() }
+=======
+            { this.displayUsers() }
+>>>>>>> user to user start
           </Grid.Row>
         </Grid>
       </Segment>
@@ -39,8 +56,12 @@ class Users extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+<<<<<<< HEAD
   const users = state.users;
   return { users }
+=======
+  return { users: state.userList };
+>>>>>>> user to user start
 }
 
 export default connect(mapStateToProps)(Users);
