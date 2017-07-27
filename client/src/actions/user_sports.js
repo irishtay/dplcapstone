@@ -4,26 +4,19 @@ export const getUserSports = () => {
   return (dispatch) => {
     axios.get('/api/user_sports')
       .then( res => {
-        dispatch({ type: 'USER_SPORTS', user_sports: res.data, headers: res.headers })
+        dispatch({ type: 'USER_SPORTS', usersports: res.data, headers: res.headers })
         // cb();
       })
   }
 }
 
-export const addUserSport = (user_sport) => {
-  console.log(user_sport);
+export const addUserSport = (id, user_sport) => {
   return (dispatch) => {
-    axios.post('/api/user_sports', { user_sport })
-      .then( res => {
-        dispatch({ type: 'ADD_USER_SPORT', user_sport: res.data, headers: res.headers })
-      })
-  }
-}
 
-export const updateUserSport = (user_sport) => {
-  return (dispatch) => {
-    axios.put(`/api/user_sports/${user_sport.id}`)
-      .then( res => dispatch({ type: 'UPDATE_USER_SPORT', user_sport: res.data, headers: res.headers }) )
+    axios.post('/api/user_sports', { user_id: id, user_sport })
+      .then( res => {
+        dispatch({ type: 'ADD_USER_SPORT', usersport: res.data, headers: res.headers })
+      })
   }
 }
 

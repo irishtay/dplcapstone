@@ -28,9 +28,9 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <ProtectedRoute path="/sports" component={FetchSports} />
-            <ProtectedRoute path="/user_sports" component={FetchUserSports} />
             <ProtectedRoute path="/posts" component={Posts} />
             <ProtectedRoute exact path='/bio' component={Bio} />
+            <ProtectedRoute exact path='/user_sports' component={FetchUserSports} />
             <ProtectedRoute exact path="/PostForm" component={PostForm} />
             <Route component={NoMatch} />
           </Switch>

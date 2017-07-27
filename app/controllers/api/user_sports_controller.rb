@@ -16,8 +16,7 @@ class Api::UserSportsController < ApplicationController
   end
 
   def create
-    user_sport = Usersport.new(user_sport_params)
-    user_sport.user_id = current_user.id
+    user_sport = Usersport.create(user_id: params[:user_id], sport_id: params[:user_sport][:sport_id], skill_level: params[:user_sport][:skill_level])
     if user_sport.save
       render json: user_sport
     else
@@ -26,7 +25,6 @@ class Api::UserSportsController < ApplicationController
   end
 
   def destroy
-    Usersport.find(params[:id]).destroy
   end
 
 private
