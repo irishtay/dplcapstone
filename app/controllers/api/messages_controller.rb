@@ -11,7 +11,7 @@ class Api::MessagesController < ApplicationController
     message = current_user.message.new(message_params)
     message.post_id = post.id
     if message.save
-      MessageBus.publish "/chat_channel/#{:message.post_id}", { comment: messages.comment }
+      MessageBus.publish "/chat_channel/#{message.post_id}", { comment: message.comment }
     else
       render json: { error: 'Error creating message' }, status: :bad_request
     end

@@ -12,7 +12,7 @@ class ChatWindow extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(setFlash('Welcome To React Chat!', 'success'));
-    dispatch(fetchMessages());
+    dispatch(fetchMessages(this.props.match.params.post_id));
 
     window.MessageBus.subscribe('/chat_channel/1', data => {
       dispatch(addMessage(data));
@@ -56,8 +56,9 @@ class ChatWindow extends Component {
   }
 
   addMessage = () => {
-    const { messages: { comment, post_id }, dispatch, post } = this.props;
-    axios.post(`/api/posts/{post_id}/messages`, { messages: { comment: this.state.newMessage, post_id: post_id }})
+    const { messages: { comment }, dispatch, post, match: { params: { post_id } } } = this.props;
+
+    axios.post(`/api/posts/${post_id}/messages`, { message: { comment: this.state.newMessage, post_id: post_id }})
       .then( res => {
         this.setState({ newMessage: '' });
       })
@@ -69,6 +70,10 @@ class ChatWindow extends Component {
   setMessage = (e) => {
     this.setState({ newMessage: e.target.value });
   }
+
+  // submitMessage = (e) => {
+  //
+  // }
 
   render() {
     return(
@@ -84,6 +89,7 @@ class ChatWindow extends Component {
             <TextArea
               value={ this.state.newMessage }
               onChange={ this.setMessage }
+              onKeyUp={this.submitMessage}
               placeholder='Write Your Chat Message Here!'
               autoFocus
               required

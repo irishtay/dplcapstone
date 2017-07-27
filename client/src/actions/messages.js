@@ -9,7 +9,7 @@ export const addMessage = (message) => {
 
 export const fetchMessages = (post_id) => {
   return(dispatch) => {
-    axios.get(`/api/posts/{post_id}/messages`)
+    axios.get(`/api/posts/${post_id}/messages`)
       .then( res => {
         dispatch({ type: 'SET_MESSAGES', messages: res.data, post_id: post_id });
       })

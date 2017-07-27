@@ -30,10 +30,10 @@ class App extends Component {
             <Route exact path='/register' component={Register} />
             <ProtectedRoute path="/sports" component={FetchSports} />
             <ProtectedRoute path="/user_sports" component={FetchUserSports} />
+            <ProtectedRoute exact path='/posts/:post_id/chat' component={ChatWindow} />
             <ProtectedRoute path="/posts" component={Posts} />
             <ProtectedRoute exact path='/bio' component={Bio} />
             <ProtectedRoute exact path="/PostForm" component={PostForm} />
-            <ProtectedRoute exact path='/chat' component={ChatWindow} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

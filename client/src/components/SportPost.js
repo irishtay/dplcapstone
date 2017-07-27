@@ -50,7 +50,7 @@ class SportPost extends React.Component {
                 <Card.Description>
                 {postInfo.user_id} posted: <strong> {postInfo.post_body}</strong>
                 </Card.Description>
-                <Link to='/chat'>
+                <Link to={`/posts/${postInfo.id}/chat`}>
                   <Menu.Item name='wechat'>
                     <Icon name='wechat' />
                     Click Here To Chat
