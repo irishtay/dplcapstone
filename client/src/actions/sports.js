@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getSports = (cb) => {
   return (dispatch) => {
     axios.get('/api/sports')
-      .then( res => {
+      .then(res => {
         dispatch({ type: 'SPORTS', sports: res.data, headeres: res.headers })
         if ( cb )
           cb();
