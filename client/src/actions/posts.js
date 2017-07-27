@@ -11,7 +11,7 @@ export const getPosts = () => {
 
 export const handlePostForm = (title, post_body, state, sport_id, history) => {
   return(dispatch) => {
-    axios.post('/api/posts', { title, post_body, state, sport_id  })
+    axios.post('/api/posts', { post: { title, post_body, state, sport_id }  })
     .then( res => {
       dispatch({ type: 'ADD_POST', post: res.data, headers: res.headers })
     })
@@ -24,7 +24,7 @@ export const handlePostForm = (title, post_body, state, sport_id, history) => {
 
 export const updatePost = (title, post_body, state, sport_id, id, cb) => {
   return(dispatch) => {
-    axios.put(`/api/posts/${id}`, { title, post_body, state, sport_id  })
+    axios.put(`/api/posts/${id}`, { post: { title, post_body, state, sport_id } })
     .then( res => {
       dispatch({ type: 'UPDATE_POST', post: res.data, headers: res.headers })
     })
