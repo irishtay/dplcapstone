@@ -19,7 +19,7 @@ class PostForm extends React.Component {
 
     const { title, post_body, st, sport_id, id } = this.state;
       if (id)
-        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, this.props.toggleEdit ))
+        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, this.props.cancel(id) ))
       else
         this.props.dispatch(handlePostForm(title, post_body, st, sport_id, this.props.history))
   }
