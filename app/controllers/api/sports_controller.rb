@@ -2,7 +2,7 @@ class Api::SportsController < ApplicationController
   before_action :set_sport, only: [:show, :update, :destroy]
 
   def index
-    render json: Sport.all.order(created_at: :desc)
+    render json: Sport.all.order(name: :asc)
   end
 
   def show
