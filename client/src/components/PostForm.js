@@ -3,14 +3,21 @@ import { Button, Form, Segment, Header, Dropdown } from 'semantic-ui-react'
 import { handlePostForm, updatePost } from '../actions/posts';
 import { connect } from 'react-redux'
 import { getSports } from '../actions/sports';
+import { withRouter } from 'react-router-dom'
 
 class PostForm extends React.Component {
     state = { title: '', post_body: '', st: '', sport_id: '' }
 
     componentDidMount() {
+
         this.props.dispatch(getSports());
-        if (this.props.postInfo)
-          this.setState({ ...this.props.postInfo })
+        if (this.props.postInfo) {
+            const { title, post_body, state } = this.props.postInfo;
+            if(this.props.match.params.id) {
+                this.setState({ title, post_body, sport_id: this.props.match.params.id, st: state  });
+            }
+            this.setState({ title, post_body, sport_id: this.props.sport_id, st: state })
+        }
     }
 
 
@@ -309,8 +316,20 @@ class PostForm extends React.Component {
                             placeholder='Select Sport'
                             fluid
                             selection
+                            value={sport_id}
                             options={sportOptions}
                             onChange={ (e, data) => this.setState({ sport_id: data.value })}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>State</label>
+                        <Dropdown
+                            placeholder='Select State'
+                            fluid
+                            selection
+                            value={st}
+                            options={stateOptions}
+                            onChange={ (e, data) => this.setState({ st: data.value })}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -322,16 +341,6 @@ class PostForm extends React.Component {
                             value={title}
                             placeholder='Title'
                             onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>State</label>
-                        <Dropdown
-                            placeholder='Select State'
-                            fluid
-                            selection
-                            options={stateOptions}
-                            onChange={ (e, data) => this.setState({ st: data.value })}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -359,4 +368,4 @@ const mapStateToProps = (state) => {
     return { sports: state.sports }
 }
 
-export default connect(mapStateToProps)(PostForm);
+export default withRouter(connect(mapStateToProps)(PostForm));

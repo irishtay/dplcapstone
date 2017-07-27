@@ -21,21 +21,20 @@ import PostForm from './PostForm';
 class SportPost extends React.Component {
     state = { edit: false }
 
-    toggleEdit = () => {
+    toggleEdit = (id) => {
         this.setState({ edit: !this.state.edit })
     }
 
     render() {
         const { postInfo, dispatch } = this.props;
-        const { edit } = this.state
-
+        const { edit, id } = this.state
         if (this.state.edit) 
-          return <PostForm postInfo={postInfo} toggleEdit={this.toggleEdit} />
+          return <PostForm postInfo={postInfo} cancel={this.toggleEdit} />
         else {
             return(
                 <Card>
             <Card.Content>
-                <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
+                <Image floated='right' size='mini' src={postInfo.image} />
                 <Card.Header>
                 <div key={postInfo.id}>
                             <h4>{postInfo.title}</h4>
