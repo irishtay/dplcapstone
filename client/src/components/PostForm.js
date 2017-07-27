@@ -325,6 +325,16 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
+                        <label>State</label>
+                        <Dropdown
+                            placeholder='Select State'
+                            fluid
+                            selection
+                            options={stateOptions}
+                            onChange={ (e, data) => this.setState({ st: data.value })}
+                        />
+                    </Form.Field>
+                    <Form.Field>
                         <label>Description</label>
                         
                         <input
@@ -334,16 +344,6 @@ class PostForm extends React.Component {
                             placeholder='Post'
                             type='post_body'
                             onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>State</label>
-                        <Dropdown
-                            placeholder='Select State'
-                            fluid
-                            selection
-                            options={stateOptions}
-                            onChange={ (e, data) => this.setState({ st: data.value })}
                         />
                     </Form.Field>
                 <Segment textAlign='center' basic>
