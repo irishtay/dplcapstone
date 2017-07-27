@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import Photos from './Photos'
 import { Card, Icon, Image, Input, Grid } from 'semantic-ui-react'
 const genderOption = [
-  { key: 'Male', text: 'Male', value: 'male'},
-  { key: 'Female', text: 'Female', value: 'female'},
-  { key: 'Other', text: 'Other', value: 'other'}
+  { key: 'Male', text: 'Male', value: 'Male'},
+  { key: 'Female', text: 'Female', value: 'Female'},
+  { key: 'Other', text: 'Other', value: 'Other'}
 ]
 class Bio extends Component {
   state = {  name: '', body: '', age: '', gender: '', st: '', edit: false };

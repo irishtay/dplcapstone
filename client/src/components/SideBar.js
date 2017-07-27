@@ -32,7 +32,7 @@ class SideBar extends Component {
               </Menu.Item>
             </Link>
 
-            <button onClick = {() => this.props.dispatch(handleLogout(this.props.history))} >
+            <button style={{ backgroundColor: 'transparent', border: 'black' }} onClick = {() => this.props.dispatch(handleLogout(this.props.history))} >
               <Menu.Item name='sign out'>
                 <Icon name='sign out' />
                 LogOut
