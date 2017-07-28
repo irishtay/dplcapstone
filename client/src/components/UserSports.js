@@ -2,16 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-  Container,
   Icon,
   Grid,
   Header,
   Card,
   Image,
-  Dropdown,
-  Divider,
   Modal,
-  Rating,
   Button,
   Segment,
 } from 'semantic-ui-react';

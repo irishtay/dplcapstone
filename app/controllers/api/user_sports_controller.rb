@@ -25,6 +25,7 @@ class Api::UserSportsController < ApplicationController
   end
 
   def destroy
+    @user_sport.destroy
   end
 
 private
