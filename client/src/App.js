@@ -33,6 +33,7 @@ class App extends Component {
             <ProtectedRoute exact path='/posts/:post_id/chat' component={ChatWindow} />
             <ProtectedRoute path="/posts" component={Posts} />
             <ProtectedRoute exact path='/bio' component={Bio} />
+            <ProtectedRoute exact path='/user_sports' component={FetchUserSports} />
             <ProtectedRoute exact path="/PostForm" component={PostForm} />
             <Route component={NoMatch} />
           </Switch>
