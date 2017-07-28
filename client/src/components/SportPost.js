@@ -28,16 +28,10 @@ class SportPost extends React.Component {
 
     render() {
         const { postInfo, dispatch } = this.props;
-<<<<<<< HEAD
-        const { edit, id } = this.state
-        if (this.state.edit) 
-          return <PostForm postInfo={postInfo} cancel={this.toggleEdit} />
-=======
         const { edit } = this.state
 
         if (this.state.edit)
           return <PostForm postInfo={postInfo} toggleEdit={this.toggleEdit} />
->>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
         else {
             return(
                 <Card>

@@ -321,29 +321,7 @@ class PostForm extends React.Component {
                             onChange={ (e, data) => this.setState({ sport_id: data.value })}
                         />
                     </Form.Field>
-                    <Form.Field>
-                        <label>State</label>
-                        <Dropdown
-                            placeholder='Select State'
-                            fluid
-                            selection
-                            value={st}
-                            options={stateOptions}
-                            onChange={ (e, data) => this.setState({ st: data.value })}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                     <label>Title</label>
-                        <input type="text"
-                            autoFocus
-                            required
-                            id='title'
-                            value={title}
-                            placeholder='Title'
-                            onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
+                        <Form.Field>
                         <label style={{ color: 'white'}}>State</label>
                         <Dropdown
                             placeholder='Select State'
@@ -353,6 +331,18 @@ class PostForm extends React.Component {
                             onChange={ (e, data) => this.setState({ st: data.value })}
                         />
                     </Form.Field>
+                  <Form.Field>
+                    <label style={{ color: 'white'}}>Title</label>
+                       <input type="text"
+                           autoFocus
+                           required
+                           id='title'
+                           value={title}
+                           placeholder='Title'
+                           onChange={this.handleChange}
+                       />
+                   </Form.Field>
+    
                     <Form.Field>
                         <label style={{ color: 'white'}}>Description</label>
                         <input
