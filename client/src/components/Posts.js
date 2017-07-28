@@ -41,7 +41,7 @@ class Posts extends React.Component {
     }
 
     displayPosts = () => {
-        let { editing } = this.state;
+        let { editing, dispatch, postInfo } = this.state;
         return this.props.posts.map( post => {
             return(
                 
@@ -55,13 +55,13 @@ class Posts extends React.Component {
         
         <Card.Header>
          <div key={post.id}>
-                    <h4>{post.title}</h4>
-                </div>
+          <h4>{post.title}</h4>
+        </div>
         </Card.Header>
         <Card.Meta>
           <div key={post.id}>
-                    <h4>{post.state}</h4>
-                </div>
+            <h4>{post.state}</h4>
+          </div>
         </Card.Meta>
         <Card.Description>
           {post.user_id} posted: <strong> {post.post_body}</strong>
@@ -69,7 +69,15 @@ class Posts extends React.Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button 
+            { this.props.userId === postInfo.user_id && 
+                <Card.Content extra>
+                    <div className='ui two buttons'>
+                    <Button onClick={this.toggleEdit} basic color='green'>Edit</Button>
+                    <Button onClick={ () => dispatch(deletePost(postInfo.id)) } basic color='red'>Delete</Button>
+                    </div>
+                </Card.Content>
+            }
+          {/*<Button 
                 basic color='green'
                 className='postEdit'
                 onClick={() => this.toggleEdit(post.id)}
@@ -82,7 +90,7 @@ class Posts extends React.Component {
                 onClick={() => this.deletePost(post.id)}
                 >
                 Delete
-                </Button>
+                </Button>*/}
         </div>
       </Card.Content>
       </div>
@@ -106,7 +114,7 @@ class Posts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { posts: state.posts }
+    return { posts: state.posts, userID: state.user.id }
 }
 
 export default connect(mapStateToProps)(Posts);
