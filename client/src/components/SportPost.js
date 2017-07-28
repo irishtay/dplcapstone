@@ -15,6 +15,7 @@ import {
   Rating,
   Button,
   Segment,
+  Menu,
 } from 'semantic-ui-react';
 import PostForm from './PostForm';
 
@@ -27,9 +28,16 @@ class SportPost extends React.Component {
 
     render() {
         const { postInfo, dispatch } = this.props;
+<<<<<<< HEAD
         const { edit, id } = this.state
         if (this.state.edit) 
           return <PostForm postInfo={postInfo} cancel={this.toggleEdit} />
+=======
+        const { edit } = this.state
+
+        if (this.state.edit)
+          return <PostForm postInfo={postInfo} toggleEdit={this.toggleEdit} />
+>>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
         else {
             return(
                 <Card>
@@ -48,8 +56,14 @@ class SportPost extends React.Component {
                 <Card.Description>
                 {postInfo.user_id} posted: <strong> {postInfo.post_body}</strong>
                 </Card.Description>
+                <Link to={`/posts/${postInfo.id}/chat`}>
+                  <Menu.Item name='wechat'>
+                    <Icon name='wechat' />
+                    Click Here To Chat
+                  </Menu.Item>
+                </Link>
             </Card.Content>
-            { this.props.userId === postInfo.user_id && 
+            { this.props.userId === postInfo.user_id &&
                 <Card.Content extra>
                     <div className='ui two buttons'>
                     <Button onClick={this.toggleEdit} basic color='green'>Edit</Button>
@@ -58,7 +72,7 @@ class SportPost extends React.Component {
                 </Card.Content>
             }
             </Card>
-            
+
             )
         }
     }

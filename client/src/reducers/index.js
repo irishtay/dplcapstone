@@ -6,6 +6,7 @@ import bio from './bio';
 import sports from './sports';
 import usersports from './usersports';
 import posts from './posts';
+import messages from './messages';
 
 const rootReducer = combineReducers({
   user,
@@ -14,6 +15,8 @@ const rootReducer = combineReducers({
   bio,
   sports,
   posts,
+  messages,
+  usersports,
 })
 
 export default rootReducer

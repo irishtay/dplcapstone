@@ -84,7 +84,7 @@ class PostForm extends React.Component {
         text: 'DE',
         value: 'DE',
         id: 'DE'
-        
+
        },
        {
         text: 'FL',
@@ -146,7 +146,7 @@ class PostForm extends React.Component {
         value: 'MD',
         id: 'MD'
        },
-       { 
+       {
         text: 'ME',
         value: 'ME',
         id: 'ME'
@@ -221,12 +221,12 @@ class PostForm extends React.Component {
         value: 'OH',
         id: 'OH'
        },
-       {  
+       {
         text: 'OK',
         value: 'OK',
         id: 'OK'
        },
-       { 
+       {
         text: 'OR',
         value: 'OR',
         id: 'OR'
@@ -245,7 +245,7 @@ class PostForm extends React.Component {
         text: 'SC',
         value: 'SC',
         id: 'SC'
-       }, 
+       },
        {
         text: 'SD',
         value: 'SD',
@@ -305,13 +305,13 @@ class PostForm extends React.Component {
                 image: sport.image
             }
         });
-        
+
         return (
-            <Segment basic>
-                <Header as='h1' textAlign='center'>{ id ? "Edit Post" : "New Post"}</Header>
+            <Segment basic inverted>
+                <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>{ id ? "Edit Post" : "New Post"}</Header>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
-                        <label>Select Sport</label>
+                        <label style={{ color: 'white'}}>Select Sport</label>
                         <Dropdown
                             placeholder='Select Sport'
                             fluid
@@ -322,6 +322,7 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
+<<<<<<< HEAD
                         <label>State</label>
                         <Dropdown
                             placeholder='Select State'
@@ -334,6 +335,9 @@ class PostForm extends React.Component {
                     </Form.Field>
                     <Form.Field>
                      <label>Title</label>
+=======
+                     <label style={{ color: 'white'}}>Title</label>
+>>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
                         <input type="text"
                             autoFocus
                             required
@@ -344,7 +348,21 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
+<<<<<<< HEAD
                         <label>Description</label>
+=======
+                        <label style={{ color: 'white'}}>State</label>
+                        <Dropdown
+                            placeholder='Select State'
+                            fluid
+                            selection
+                            options={stateOptions}
+                            onChange={ (e, data) => this.setState({ st: data.value })}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <label style={{ color: 'white'}}>Description</label>
+>>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
                         <input
                             required
                             id='post_body'
@@ -354,12 +372,12 @@ class PostForm extends React.Component {
                             onChange={this.handleChange}
                         />
                     </Form.Field>
-                <Segment textAlign='center' basic>
-                <Button primary type='submit'>Submit</Button>
-                { id && <Button type="button" onClick={() => this.props.cancel(id)}>Cancel</Button> }
-                </Segment>
-        </Form>
-      </Segment>
+                      <Segment textAlign='center' basic>
+                        <Button primary type='submit'>Submit</Button>
+                        <Button type="button" onClick={() => this.props.cancel(id)}>Cancel</Button>
+                      </Segment>
+                    </Form>
+            </Segment>
     )
   }
 }

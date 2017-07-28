@@ -14,6 +14,7 @@ import FetchSports from './components/FetchSports';
 import { Segment } from 'semantic-ui-react';
 import FetchUserSports from './components/FetchUserSports'
 import PostForm from './components/PostForm';
+import ChatWindow from './components/ChatWindow';
 
 class App extends Component {
   render() {
@@ -29,8 +30,10 @@ class App extends Component {
             <Route exact path='/register' component={Register} />
             <ProtectedRoute path="/sports" component={FetchSports} />
             <ProtectedRoute path="/user_sports" component={FetchUserSports} />
+            <ProtectedRoute exact path='/posts/:post_id/chat' component={ChatWindow} />
             <ProtectedRoute path="/posts" component={Posts} />
             <ProtectedRoute exact path='/bio' component={Bio} />
+            <ProtectedRoute exact path='/user_sports' component={FetchUserSports} />
             <ProtectedRoute exact path="/PostForm" component={PostForm} />
             <Route component={NoMatch} />
           </Switch>

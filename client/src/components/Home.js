@@ -21,7 +21,13 @@ class Home extends Component {
 
         <Container>
           <Link to='/login'>
-            <Menu.Item name="ENTER" style={{ fontFamily: 'Rock Salt', color: 'white', display: 'flex', justifyContent: 'flex-end' }}/>
+            <Menu.Item name="ENTER"
+              style={{ fontFamily: 'Rock Salt',
+                color: 'white',
+                display: 'flex',
+                justifyContent: 'flex-end'
+              }}
+            />
           </Link>
         </Container>
 
@@ -30,7 +36,7 @@ class Home extends Component {
       );
     } else {
       return(
-        <div>Log in to Athlete 2 Athlete</div>
+        <div>Login to Athlete 2 Athlete</div>
       )
     }
   }

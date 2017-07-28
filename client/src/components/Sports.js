@@ -32,7 +32,8 @@ class Sports extends React.Component {
   })
 
   handleClose = (e) => {
-    this.props.dispatch(addUserSport({sport_id: e.target.id, skill_level: this.state.rating}));
+    const user_id = this.props.user.id
+    this.props.dispatch(addUserSport(user_id, {sport_id: e.target.id, skill_level: this.state.rating}));
     this.setState({modalOpen: false})
   }
 
@@ -80,6 +81,7 @@ class Sports extends React.Component {
             </div>
           </Card.Content>
           </Card>
+          <br />
         </Grid.Column>
       )
     })
@@ -88,6 +90,7 @@ class Sports extends React.Component {
     return(
       <Segment basic>
         <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>---- All Sports ----</Header>
+        <br /><br />
         <Link to='/PostForm'>Add Post</Link>
         <Grid>
           <Grid.Row>
@@ -101,7 +104,8 @@ class Sports extends React.Component {
 
 const mapStateToProps = (state) => {
   const sports = state.sports;
-  return { sports }
+  const user = state.user;
+  return { sports, user }
 }
 
 export default connect(mapStateToProps)(Sports);
