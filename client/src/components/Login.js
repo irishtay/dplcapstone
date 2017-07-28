@@ -65,7 +65,7 @@ class Login extends Component {
         <Segment textAlign='center'>
               <Image
                 inline={true}
-                src={require('../images/a2alogo_480.png')}
+                src={require('../images/a2a-logo_360.png')}
                 size='large'
                 centered
               />
