@@ -1,4 +1,5 @@
 class Api::UserSportsController < ApplicationController
+before_action :set_user_sport, only: [:destroy]
 
   def index
     user_sports = []
@@ -29,6 +30,9 @@ class Api::UserSportsController < ApplicationController
   end
 
 private
+  def set_user_sport
+    @user_sport = Usersport.find(params[:id])
+  end
 
   def user_sport_params
     params.require(:user_sport).permit(:skill_level, :sport_id, :user_id)

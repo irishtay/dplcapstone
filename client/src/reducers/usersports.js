@@ -8,7 +8,7 @@ const usersports = ( state = [], action ) => {
       return [...state, action.usersport];
     case 'DELETE_USER_SPORT':
       //{ type: 'DELETE_SPORT', id: 7 }
-      return state.filter( a => a.id !== action.id )
+      return state.filter( a => a.id != action.id )
     default:
       return state;
   }

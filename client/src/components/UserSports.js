@@ -10,6 +10,7 @@ import {
   Modal,
   Button,
   Segment,
+  Rating,
 } from 'semantic-ui-react';
 import { getUserSports, deleteUserSport } from '../actions/user_sports';
 
@@ -43,7 +44,8 @@ usersports = () => {
               <Card.Header>
                 { name }
                 <br />
-                Your Skill Level: {skillLevel}
+                Your Skill Level: &nbsp;
+                <Rating icon='star' size='medium' maxRating={5} defaultRating={skillLevel} disabled/>
               </Card.Header>
             </Card.Content>
           <Link to={`/user_sports/${id}`}>

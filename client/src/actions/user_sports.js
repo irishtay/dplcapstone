@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setFlash } from './flash';
 
 export const getUserSports = () => {
   return (dispatch) => {
@@ -15,6 +16,9 @@ export const addUserSport = (id, user_sport) => {
     axios.post('/api/user_sports', { user_id: id, user_sport })
       .then( res => {
         dispatch({ type: 'ADD_USER_SPORT', usersport: res.data, headers: res.headers })
+      })
+      .catch( res => {
+        dispatch(setFlash('Already Subscribed to Sport', 'error'));
       })
   }
 }
