@@ -18,7 +18,7 @@ export const addUserSport = (id, user_sport) => {
         dispatch({ type: 'ADD_USER_SPORT', usersport: res.data, headers: res.headers })
       })
       .catch( res => {
-        dispatch(setFlash('Already Subscribed to Sport', 'error'));
+        dispatch(setFlash('Already Subscribed to That Sport', 'error'));
       })
   }
 }

@@ -45,7 +45,7 @@ usersports = () => {
                 { name }
                 <br />
                 Your Skill Level: &nbsp;
-                <Rating icon='star' size='medium' maxRating={5} defaultRating={skillLevel} disabled/>
+                <Rating icon='star' size='medium' maxRating={5} rating={skillLevel} disabled/>
               </Card.Header>
             </Card.Content>
           <Link to={`/user_sports/${id}`}>
@@ -88,6 +88,7 @@ usersports = () => {
             </div>
           </Card.Content>
           </Card>
+          <br />
         </Grid.Column>
       )
     })
@@ -96,7 +97,9 @@ usersports = () => {
   render() {
     return(
       <Segment basic>
-        <Header as='h1' style={{ color: 'green' }} textAlign='center'>Subscribed Sports</Header>
+        <Header as='h1' textAlign='center'
+        style={{ fontFamily: 'Rock Salt' }}>---- Your Favorite Sports ----</Header>
+        <br /><br />
         <Grid>
           <Grid.Row>
             { this.usersports() }

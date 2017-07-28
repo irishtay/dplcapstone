@@ -81,6 +81,7 @@ class Sports extends React.Component {
             </div>
           </Card.Content>
           </Card>
+          <br />
         </Grid.Column>
       )
     })
@@ -89,6 +90,7 @@ class Sports extends React.Component {
     return(
       <Segment basic>
         <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>---- All Sports ----</Header>
+        <br /><br />
         <Link to='/PostForm'>Add Post</Link>
         <Grid>
           <Grid.Row>

@@ -18,11 +18,15 @@ const Flash = ({ flash, dispatch }) => {
       <div
         id='alert'
         className={`alert alert-${flash.msgType}`}
-        style={{ width: '90%', margin: '0 auto'}}
+        style={{ fontFamily: 'Rock Salt', width: '40%', height: '60px', margin: '0 auto'}}
       >
         { flash.message }
         { fadeFlash(dispatch) }
-        <Button onClick={ () => dispatch(clearFlash()) }> X </Button>
+        <Button
+          style={{ fontFamily: 'Rock Salt', margin: 'auto auto', backgroundColor: 'blue'}}
+          floated='right'
+          inverted
+          onClick={ () => dispatch(clearFlash()) }> OK </Button>
       </div>
     )
   } else {
