@@ -27,14 +27,14 @@ class SportPost extends React.Component {
     }
 
     render() {
-        const { postInfo, dispatch } = this.props;
-        const { edit } = this.state
+      const { postInfo, dispatch } = this.props;
+      const { edit } = this.state
 
-        if (this.state.edit)
-          return <PostForm postInfo={postInfo} toggleEdit={this.toggleEdit} />
-        else {
-            return(
-                <Card>
+      if (this.state.edit)
+        return <PostForm postInfo={postInfo} toggleEdit={this.toggleEdit} />
+      else {
+        return(
+          <Card>
             <Card.Content>
                 <Image floated='right' size='mini' src={postInfo.image} />
                 <Card.Header>
@@ -65,10 +65,9 @@ class SportPost extends React.Component {
                     </div>
                 </Card.Content>
             }
-            </Card>
-
-            )
-        }
+          </Card>
+          )
+      }
     }
 }
 

@@ -28,6 +28,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @post.update(post_params)
       render json: @post, notice: "Post Updated"
     else
@@ -41,6 +42,9 @@ class Api::PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :post_body, :state, :sport_id)
+      params.require(:post).permit(
+        :title, :post_body, :state,
+        :sport_id, :zip, :street_address, :city
+      )
     end
 end

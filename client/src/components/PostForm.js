@@ -6,15 +6,15 @@ import { getSports } from '../actions/sports';
 import { withRouter } from 'react-router-dom'
 
 class PostForm extends React.Component {
-    state = { title: '', post_body: '', st: '', sport_id: '' }
+    state = { title: '', post_body: '', st: '', sport_id: '', zip: '', streetAddress: '', city: '' }
 
     componentDidMount() {
 
         this.props.dispatch(getSports());
         if (this.props.postInfo) {
-            const { title, post_body, state } = this.props.postInfo;
+            const { title, post_body, state, id } = this.props.postInfo;
             if(this.props.match.params.id) {
-                this.setState({ title, post_body, sport_id: this.props.match.params.id, st: state  });
+                this.setState({ title, post_body, sport_id: this.props.match.params.id, st: state, id  });
             }
             this.setState({ title, post_body, sport_id: this.props.sport_id, st: state })
         }
@@ -24,11 +24,11 @@ class PostForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { title, post_body, st, sport_id, id } = this.state;
+    const { title, post_body, st, sport_id, id, zip, city, streetAddress } = this.state;
       if (id)
-        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, this.props.cancel(id) ))
+        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, zip, city, streetAddress, this.props.cancel(id) ))
       else
-        this.props.dispatch(handlePostForm(title, post_body, st, sport_id, this.props.history))
+        this.props.dispatch(handlePostForm(title, post_body, st, sport_id, this.props.history, zip, city, streetAddress))
   }
 
   handleChange = (e) => {
@@ -37,7 +37,7 @@ class PostForm extends React.Component {
   }
 
     render () {
-        const { title, post_body, st, sport_id, id } = this.state;
+        const { title, post_body, st, sport_id, id, zip, city, streetAddress } = this.state;
 
     const stateOptions = [
        {
@@ -305,10 +305,9 @@ class PostForm extends React.Component {
                 image: sport.image
             }
         });
-
         return (
             <Segment basic inverted>
-                <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>{ id ? "Edit Post" : "New Post"}</Header>
+                <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>{ this.props.match.params.id ? "Edit Post" : "New Post"}</Header>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label style={{ color: 'white'}}>Select Sport</label>
@@ -342,7 +341,45 @@ class PostForm extends React.Component {
                            onChange={this.handleChange}
                        />
                    </Form.Field>
-    
+
+
+
+                   <Form.Field>
+                     <label style={{ color: 'white'}}>Zip</label>
+                        <input type="text"
+                            autoFocus
+                            required
+                            id='zip'
+                            value={zip}
+                            placeholder='Zip'
+                            onChange={this.handleChange}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                      <label style={{ color: 'white'}}>Street Address</label>
+                         <input type="text"
+                             autoFocus
+                             required
+                             id='streetAddress'
+                             value={streetAddress}
+                             placeholder='Street Address'
+                             onChange={this.handleChange}
+                         />
+                     </Form.Field>
+                     <Form.Field>
+                       <label style={{ color: 'white'}}>City</label>
+                          <input type="text"
+                              autoFocus
+                              required
+                              id='city'
+                              value={city}
+                              placeholder='City'
+                              onChange={this.handleChange}
+                          />
+                      </Form.Field>
+
+
+
                     <Form.Field>
                         <label style={{ color: 'white'}}>Description</label>
                         <input

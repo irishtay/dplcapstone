@@ -12,6 +12,10 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 
+const Post = ({ text }) => (
+  <div>{text}</div>
+);
+
 class Map extends Component {
   static defaultProps = {
     center: { lat: 40.477128, lng: -111.922185 },
@@ -21,7 +25,6 @@ class Map extends Component {
   state = {
     center: this.props.center,
     zoom: this.props.zoom,
-    address: 'DevPoint Labs',
     loaded: false
   }
 
@@ -40,21 +43,6 @@ class Map extends Component {
     this.setState({ address: e.target.value });
   }
 
-  findAddress = () => {
-    const { dispatch } = this.props;
-    const { address } = this.state;
-
-    axios.get(`/api/location?address=${address}`)
-      .then( res => {
-        let { data } = res;
-        this.setState({ address, center: { lat: data[0], lng: data[1] } });
-        dispatch(setFlash('Address Found!', 'success'));
-      })
-      .catch( res => {
-        dispatch(setFlash('Error finding address', 'error'));
-    });
-  }
-
   createMapOptions = () => {
     return {
       panControl: true,
@@ -68,27 +56,26 @@ class Map extends Component {
 
     return(
       <Segment>
-        <Header as='h2'>Google Map - Address Checker</Header>
-        <Form onSubmit={this.findAddress}>
-          <Input
-            value={address}
-            onChange={this.handleChange}
-            required
-            placeholder='Find An Address'
-          />
-          <Button primary type='submit'>Go!</Button>
-          <Divider />
-          { this.state.loaded &&
-            <Segment basic style={{ height: '600px', width: '600px', margin: '0 auto' }}>
-              <GoogleMapReact
-                options={this.createMapOptions}
-                defaultCenter={center}
-                defaultZoom={zoom}
-                center={center}
-              />
-            </Segment>
-          }
-        </Form>
+        <Segment basic style={{ height: '600px', width: '600px' }}>
+          <GoogleMapReact
+            options={this.createMapOptions}
+            defaultCenter={center}
+            defaultZoom={zoom}
+            center={center}
+          >
+            {
+               this.props.posts.map( post => {
+                 return(
+                   <Post
+                    lat={post.lat}
+                    lng={post.long}
+                    text={post.title}
+                   />
+                 )
+               })
+            }
+          </GoogleMapReact>
+        </Segment>
       </Segment>
     )
   }

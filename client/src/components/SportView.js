@@ -4,6 +4,7 @@ import { Divider, Header, Image, Container, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSportPosts } from '../actions/posts';
 import SportPost from './SportPost';
+import Map from './Map';
 
 class SportView extends React.Component {
 
@@ -29,6 +30,7 @@ class SportView extends React.Component {
         <Link to='/Sports'> All Sports </Link>
         <Link to='/Posts'> All Posts</Link>
         { allPosts }
+        <Map posts={this.props.posts} />
       </Container>
     )
   }

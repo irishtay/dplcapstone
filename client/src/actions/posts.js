@@ -9,11 +9,12 @@ export const getPosts = () => {
   }
 }
 
-export const handlePostForm = (title, post_body, state, sport_id, history) => {
+export const handlePostForm = (title, post_body, state, sport_id, history, zip, city, streetAddress) => {
   return(dispatch) => {
-    axios.post('/api/posts', { post: { title, post_body, state, sport_id }  })
+    axios.post('/api/posts', { post: { title, post_body, state, sport_id, zip, city, street_address: streetAddress }  })
     .then( res => {
       dispatch({ type: 'ADD_POST', post: res.data, headers: res.headers })
+      debugger
     })
     .then( history.push(`/sports/${sport_id}`) )
     .catch(function (error) {
@@ -22,9 +23,9 @@ export const handlePostForm = (title, post_body, state, sport_id, history) => {
   }
 }
 
-export const updatePost = (title, post_body, state, sport_id, id, cb) => {
+export const updatePost = (title, post_body, state, sport_id, id, cb, zip, city, streetAddress) => {
   return(dispatch) => {
-    axios.put(`/api/posts/${id}`, { post: { title, post_body, state, sport_id } })
+    axios.put(`/api/posts/${id}`, { post: { title, post_body, state, sport_id, zip, city, street_address: streetAddress } })
     .then( res => {
       dispatch({ type: 'UPDATE_POST', post: res.data, headers: res.headers })
     })
