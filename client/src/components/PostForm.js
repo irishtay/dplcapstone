@@ -322,7 +322,6 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
-<<<<<<< HEAD
                         <label>State</label>
                         <Dropdown
                             placeholder='Select State'
@@ -335,9 +334,6 @@ class PostForm extends React.Component {
                     </Form.Field>
                     <Form.Field>
                      <label>Title</label>
-=======
-                     <label style={{ color: 'white'}}>Title</label>
->>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
                         <input type="text"
                             autoFocus
                             required
@@ -348,9 +344,6 @@ class PostForm extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
-<<<<<<< HEAD
-                        <label>Description</label>
-=======
                         <label style={{ color: 'white'}}>State</label>
                         <Dropdown
                             placeholder='Select State'
@@ -362,7 +355,6 @@ class PostForm extends React.Component {
                     </Form.Field>
                     <Form.Field>
                         <label style={{ color: 'white'}}>Description</label>
->>>>>>> 2a7fe17bca3a9e396b40ea39fe32cc45f8a49e51
                         <input
                             required
                             id='post_body'
