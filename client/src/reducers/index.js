@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
   sports,
   posts,
   messages,
+  usersports,
 })
 
 export default rootReducer

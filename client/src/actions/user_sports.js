@@ -1,35 +1,31 @@
 import axios from 'axios';
+import { setFlash } from './flash';
 
 export const getUserSports = () => {
   return (dispatch) => {
     axios.get('/api/user_sports')
       .then( res => {
-        dispatch({ type: 'USER_SPORTS', user_sports: res.data, headers: res.headers })
+        dispatch({ type: 'USER_SPORTS', usersports: res.data, headers: res.headers })
         // cb();
       })
   }
 }
 
-export const addUserSport = (user_sport) => {
-  console.log(user_sport);
+export const addUserSport = (id, user_sport) => {
   return (dispatch) => {
-    axios.post('/api/user_sports', { user_sport })
+    axios.post('/api/user_sports', { user_id: id, user_sport })
       .then( res => {
-        dispatch({ type: 'ADD_USER_SPORT', user_sport: res.data, headers: res.headers })
+        dispatch({ type: 'ADD_USER_SPORT', usersport: res.data, headers: res.headers })
       })
-  }
-}
-
-export const updateUserSport = (user_sport) => {
-  return (dispatch) => {
-    axios.put(`/api/user_sports/${user_sport.id}`)
-      .then( res => dispatch({ type: 'UPDATE_USER_SPORT', user_sport: res.data, headers: res.headers }) )
+      .catch( res => {
+        dispatch(setFlash('Already Subscribed to That Sport', 'error'));
+      })
   }
 }
 
 export const deleteUserSport = (id) => {
   return (dispatch) => {
-    axios.delete(`/api/user_sports/${id}`)
-      .then( res => dispatch({ type: 'DELETE_USER_SPORT', id, headers: res.headers }) )
+    axios.delete(`/api/user_sports/${id.sport_id}`)
+      .then( res => dispatch({ type: 'DELETE_USER_SPORT', id: id.sport_id, headers: res.headers }) )
   }
 }
