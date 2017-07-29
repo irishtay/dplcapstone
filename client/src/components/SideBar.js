@@ -31,6 +31,12 @@ class SideBar extends Component {
                 Favorite Sports
               </Menu.Item>
             </Link>
+            <Link to='/users'>
+              <Menu.Item name='users'>
+                <Icon name='users' />
+                Social
+              </Menu.Item>
+            </Link>
 
             <button style={{ backgroundColor: 'transparent', border: 'black' }} onClick = {() => this.props.dispatch(handleLogout(this.props.history))} >
               <Menu.Item name='sign out'>

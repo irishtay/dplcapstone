@@ -15,10 +15,12 @@ class Api::PhotosController < ApplicationController
     photo = params[photo_name]
 
     cloud_photo = Cloudinary::Uploader.upload(photo, auth)
-    photo = Photo.create!(url: cloud_photo['url'])
+    # photo = Photo.create!(url: cloud_photo['url'])
+    current_user.bio.image_url = cloud_photo['url']
+    current_user.bio.save
     #update bio image url
     # send back the bio to actions
-    render json: photo
+    render json: current_user.bio
   end
 
   def destroy

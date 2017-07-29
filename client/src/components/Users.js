@@ -30,16 +30,29 @@ class Users extends React.Component {
 <<<<<<< HEAD
 =======
   displayUsers = () => {
+    const sizes = ['mini', 'tiny', 'small', 'large', 'big', 'huge', 'massive']
     return this.props.users.map(user => {
 
       return(
+      <div>
+        {sizes.map(size => (
+          <div key={'huge'}>
+        <List divided vertical size={'huge'} celled>
         <List.Item>
-          <Image avatar src={user.image} />
+        <List.Content floated='right'>
+        <Button>Add</Button>
+      </List.Content>
+          <Image avatar src={user.image_url} />
           <List.Content>
             <List.Header as='a'>{user.name}</List.Header>
             <List.Description>{user.body}</List.Description>
           </List.Content>
         </List.Item>
+        </List>
+        <br />
+        </div>
+      ))}
+      </div>
       );
     });
   }
@@ -48,6 +61,7 @@ class Users extends React.Component {
   render() {
     return(
       <Segment basic>
+<<<<<<< HEAD
         <Header as='h1' style={{ color: 'blue' }} textAlign='center'>Users!</Header>
 <<<<<<< HEAD
         <Grid>
@@ -60,6 +74,9 @@ class Users extends React.Component {
           </Grid.Row>
         </Grid>
 =======
+=======
+        <Header as='h1' style={{ color: 'blue' }} textAlign='center'>Users</Header>
+>>>>>>> friend model/controller added
         <List>
           { this.displayUsers() }
         </List>
@@ -80,7 +97,8 @@ const mapStateToProps = (state) => {
 =======
   return {
     users: state.userList,
-    bios: state.bios
+    bios: state.bios,
+    photos: state.photos,
    };
 >>>>>>> Updated user list
 }
