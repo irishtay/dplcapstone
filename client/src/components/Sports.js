@@ -112,13 +112,13 @@ class Sports extends React.Component {
       <Segment basic>
         <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- All Sports ---</Header>
         <br /><br />
-        { this.instructions() }
         <Link to='/PostForm'>Add Post</Link>
         <Grid>
           <Grid.Row>
             { this.sports() }
           </Grid.Row>
         </Grid>
+        { this.instructions() }
       </Segment>
     )
   }
