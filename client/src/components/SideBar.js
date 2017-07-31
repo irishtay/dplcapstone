@@ -16,6 +16,7 @@ class SideBar extends Component {
             <Link to='/bio'>
               <Menu.Item name='id badge'>
                 <Icon name='id badge' />
+                My Bio
                 {this.props.loggedinUser &&
                   this.props.loggedInUser.email
                 }

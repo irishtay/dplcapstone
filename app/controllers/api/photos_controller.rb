@@ -1,9 +1,4 @@
 class Api::PhotosController < ApplicationController
-  # TODO: BIO has many photos if you wanted your bios to be associated with photos
-  def index
-    render json: Photo.all
-  end
-
   def create
     auth = {
       cloud_name: ENV['CLOUD_NAME'],
@@ -24,7 +19,8 @@ class Api::PhotosController < ApplicationController
   end
 
   def destroy
-    # LATER: use the cloudinary gem to delete the photo
-    Photo.find(params[:id]).destroy
+    # TODO: should go to Cloudinary and delete the photo
+    current_user.bio.update(image_url: '')
+    render json: current_user.bio
   end
 end

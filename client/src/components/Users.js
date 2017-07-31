@@ -21,16 +21,9 @@ import {
 import { getUsers } from '../actions/users';
 import { getBio } from '../actions/bio';
 
-
 class Users extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      whichList: 'all',
-      friendsList: []
-    }
+  state = { whichList: 'all', friendsList: [] };
 
-  }
   handleListChange = (val) => {
     this.setState({
       whichList: val

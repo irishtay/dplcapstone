@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     # POST /api/photos
     post 'photos', to: 'photos#create'
     # DELETE /api/photos
-    delete 'photos/:id', to: 'photos#destroy'
+    delete 'photos', to: 'photos#destroy'
     # resources :bio, only: [:show, :update]
     resources :user_sports, only: [:index, :destroy, :create]
     get 'user_post', to: 'posts#user_posts'

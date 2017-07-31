@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import { setFlash } from '../actions/flash';
 import { updateBio, getBio } from '../actions/bio';
-import { fetchPhotos } from '../actions/photos';
 import { connect } from 'react-redux';
 import Photos from './Photos'
 import { Card, Icon, Image, Input, Grid } from 'semantic-ui-react'
@@ -20,14 +19,13 @@ class Bio extends Component {
 
   componentDidMount() {
     this.props.dispatch(getBio());
-    this.props.dispatch(fetchPhotos());
   }
   toggleEdit = () => {
     const { name, age, state, gender, body } = this.props.bio;
     this.setState({ name, age, st: state, gender, body, edit: !this.state.edit });
   }
   displayBio = () => {
-    let { name, age, gender, state, body} = this.props.bio
+    let { name, age, gender, state, body, image_url } = this.props.bio
     return(
 
     <Segment textAlign='center'>
@@ -35,8 +33,8 @@ class Bio extends Component {
       <Grid centered style={styles.theGrid}>
         <Card style={styles.bio}>
           <Card.Content>
-            { this.props.photos.length > 0 &&
-              <Image src={this.props.photos[0].url} />
+            { image_url &&
+              <Image src={image_url} />
             }
           </Card.Content>
         </Card>
@@ -184,7 +182,7 @@ class Bio extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { bio: state.bio, photos: state.photos  }
+  return { bio: state.bio }
 }
 const styles = {
   bio:{ width: '600px', margin: 0},

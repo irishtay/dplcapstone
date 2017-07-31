@@ -1,9 +1,6 @@
 class Api::UsersController < ApplicationController
 
   def index
-<<<<<<< HEAD
-    render json: User.all.order(email: :desc)
-=======
     myUsers = User.all.order(name: :desc)
     users = []
     myUsers.each do |user|
@@ -18,7 +15,6 @@ class Api::UsersController < ApplicationController
       }
     end
     render json: users
->>>>>>> Usertouser
   end
 
   def show
