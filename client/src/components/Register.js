@@ -28,8 +28,8 @@ class Register extends Component {
     const { email, password, passwordConfirmation } = this.state;
 
     return(
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Register New User</Header>
+      <Segment inverted basic>
+        <Header style={{ fontFamily: 'Rock Salt', fontSize: '30px' }} textAlign='center'>Register New User</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Email</label>
