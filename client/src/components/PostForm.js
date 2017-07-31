@@ -27,14 +27,24 @@ class PostForm extends React.Component {
 
     const { title, post_body, st, sport_id, id, zip, city, streetAddress } = this.state;
       if (id)
-        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, zip, city, streetAddress, this.props.cancel(id) ))
+        this.props.dispatch(updatePost(title, post_body, st, sport_id, id, zip, city, streetAddress, this.props.toggleEdit(id) ))
       else
         this.props.dispatch(handlePostForm(title, post_body, st, sport_id, this.props.history, zip, city, streetAddress))
   }
 
+  
+
   handleChange = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
+  }
+
+  toggleFunction = () => {
+      let { postInfo = {} } = this.props 
+      if (postInfo.id)
+        return () => this.props.toggleEdit(postInfo.id)
+      else
+        return () => this.props.history.push('/posts')
   }
 
     render () {
@@ -394,7 +404,7 @@ class PostForm extends React.Component {
                     </Form.Field>
                       <Segment textAlign='center' basic>
                         <Button primary type='submit'>Submit</Button>
-                        <Button type="button" onClick={() => this.props.cancel(id)}>Cancel</Button>
+                        <Button type="button" onClick={this.toggleFunction()}>Cancel</Button>
                       </Segment>
                     </Form>
             </Segment>
