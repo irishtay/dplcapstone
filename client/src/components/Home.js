@@ -30,8 +30,6 @@ class Home extends Component {
             />
           </Link>
         </Container>
-
-
         </Segment>
       );
     } else {

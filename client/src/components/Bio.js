@@ -7,6 +7,9 @@ import { fetchPhotos } from '../actions/photos';
 import { connect } from 'react-redux';
 import Photos from './Photos'
 import { Card, Icon, Image, Input, Grid } from 'semantic-ui-react'
+import '../styles/bio.css';
+
+
 const genderOption = [
   { key: 'Male', text: 'Male', value: 'Male'},
   { key: 'Female', text: 'Female', value: 'Female'},
@@ -26,43 +29,63 @@ class Bio extends Component {
   displayBio = () => {
     let { name, age, gender, state, body} = this.props.bio
     return(
-      <Segment textAlign='center'>
-<Grid centered>
-  <Card style={styles.bio}>
-    <Card.Content>
-      { this.props.photos.length > 0 &&
-        <Image src={this.props.photos[0].url} />
-      }
-      <Card.Header>
+
+
+<Segment textAlign='center'>
+    <br />
+  <Grid centered style={styles.theGrid}>
+    <Card style={styles.bio}>
+      <Card.Content>
+        { this.props.photos.length > 0 &&
+          <Image src={this.props.photos[0].url} />
+        }
+      </Card.Content>
+    </Card>
+
+  <Card style={styles.bio} className="rightCard">
+    <br />
+    <Header style={{ fontSize: '40px', fontFamily: 'Rock Salt'}}>
         {name}
-      </Card.Header>
-      <Card.Meta>
+    </Header>
       <a>
-        <Icon name='heterosexual' />
-          {gender}
+        #
+        {body}
       </a>
-        <br/>
+        <br />
+        <br />
+      <a className="labels">
+        <Icon name='heterosexual'/>
+        <br />
+        Gender:
+        {gender}
+      </a>
+        <br />
+        <br />
+        <br />
+      <a className="labels">
+        <Icon name='dribble'/>
+        <br />
         Age:
-          {age}
-        <br/>
-      <a>
-        <Icon name='marker' />
-          {state}
+        {age}
       </a>
         <br/>
-      <a>
-        About:
-          {body}
+        <br />
+        <br />
+      <a className="labels">
+        <Icon name='marker'/>
+        <br />
+        Location:
+        {state}
       </a>
-      </Card.Meta>
-    </Card.Content>
   </Card>
-</Grid>
-        <br/>
+  </Grid>
+        <br />
+        <br />
         <Button primary onClick={this.toggleEdit}>Edit Bio</Button>
-      </Segment>
+</Segment>
     )
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, age, st, gender, body } = this.state;
@@ -111,7 +134,7 @@ class Bio extends Component {
           </Form.Group>
           <Form.Field>
             <Form.Input
-              label='Body'
+              label='Personal Tag'
               placeholder='Enter a personal tag...'
               name='body'
               value={this.state.body}
@@ -128,16 +151,21 @@ class Bio extends Component {
   render() {
     return(
       <Segment inverted basic>
-        <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>---- My Bio ----</Header>
+        <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '30px' }}>--- My Bio ---</Header>
         { this.state.edit ? this.editBio() : this.displayBio() }
       </Segment>
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return { bio: state.bio, photos: state.photos  }
 }
 const styles = {
-  bio: { width: '500px'}
+  bio:{ width: '600px', margin: 0},
+  theGrid: {width: '100%', height: '100%'}
 }
+
+
+
 export default connect(mapStateToProps)(Bio);

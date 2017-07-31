@@ -97,8 +97,8 @@ usersports = () => {
   render() {
     return(
       <Segment basic>
-        <Header as='h1' textAlign='center'
-        style={{ fontFamily: 'Rock Salt' }}>---- Your Favorite Sports ----</Header>
+        <Header textAlign='center'
+        style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- Your Favorite Sports ---</Header>
         <br /><br />
         <Grid>
           <Grid.Row>

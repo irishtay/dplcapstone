@@ -11,7 +11,7 @@ class ChatWindow extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(setFlash('Welcome To React Chat!', 'success'));
+    dispatch(setFlash('Welcome To Chat!', 'success'));
     dispatch(fetchMessages());
     dispatch(fetchMessages(this.props.match.params.post_id));
 
@@ -79,13 +79,13 @@ class ChatWindow extends Component {
   render() {
     return(
       <Segment basic>
-        <Header as='h2' textAlign='center' style={styles.underline}>React Chat!</Header>
+        <Header as='h2' textAlign='center' style={styles.underline}>Athlete 2 Athlete Chat!</Header>
         <Segment basic style={styles.mainWindow} id='chat-window'>
           <Segment basic>
             { this.displayMessages() }
           </Segment>
         </Segment>
-        <Segment style={styles.messageInput}>
+        <Segment inverted style={styles.messageInput}>
           <Form onSubmit={ this.addMessage }>
             <TextArea
               value={ this.state.newMessage }
@@ -108,12 +108,14 @@ class ChatWindow extends Component {
 const styles = {
   underline: {
     textDecoration: 'underline',
+    fontFamily: 'Rock Salt',
+    fontSize: '40px'
   },
   mainWindow: {
     border: '3px solid black',
-    height: '60vh',
+    height: '50vh',
     overflowY: 'scroll',
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'black',
     borderRadius: '10px',
   },
 }

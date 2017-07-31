@@ -89,7 +89,7 @@ class Sports extends React.Component {
   render() {
     return(
       <Segment basic>
-        <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>---- All Sports ----</Header>
+        <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- All Sports ---</Header>
         <br /><br />
         <Link to='/PostForm'>Add Post</Link>
         <Grid>

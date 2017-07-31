@@ -307,7 +307,7 @@ class PostForm extends React.Component {
         });
         return (
             <Segment basic inverted>
-                <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>{ this.props.match.params.id ? "Edit Post" : "New Post"}</Header>
+                <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>{ this.props.match.params.id ? "Edit Post" : "New Post"}</Header>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label style={{ color: 'white'}}>Select Sport</label>
