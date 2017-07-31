@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'location', to: 'location#show'
+    get 'landing', to: 'landing#info'
     get 'bio', to: 'bio#show'
     put 'bio', to: 'bio#update'
     get 'sports/index'

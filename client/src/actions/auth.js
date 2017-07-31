@@ -50,7 +50,7 @@ export const handleLogin = (email, password, history) => {
       .then( res => {
         let { data: { data: user }, headers } = res;
         dispatch({ type: 'LOGIN', user, headers });
-        history.push('/bio');
+        history.push('/landing');
       })
       .catch( res => {
         dispatch(setFlash('Please register as a new user', 'error'));

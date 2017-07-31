@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 20170730184739) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_sports", force: :cascade do |t|
+    t.string "skill_level"
+    t.bigint "sport_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_user_sports_on_sport_id"
+    t.index ["user_id"], name: "index_user_sports_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -109,21 +119,11 @@ ActiveRecord::Schema.define(version: 20170730184739) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  create_table "usersports", force: :cascade do |t|
-    t.string "skill_level"
-    t.bigint "sport_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sport_id"], name: "index_usersports_on_sport_id"
-    t.index ["user_id"], name: "index_usersports_on_user_id"
-  end
-
   add_foreign_key "bios", "users"
   add_foreign_key "messages", "posts"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "sports"
   add_foreign_key "posts", "users"
-  add_foreign_key "usersports", "sports"
-  add_foreign_key "usersports", "users"
+  add_foreign_key "user_sports", "sports"
+  add_foreign_key "user_sports", "users"
 end
