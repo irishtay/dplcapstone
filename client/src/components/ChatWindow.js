@@ -11,11 +11,12 @@ class ChatWindow extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
+    const { post_id } = this.props.match.params;
     dispatch(setFlash('Welcome To Chat!', 'success'));
     dispatch(fetchMessages());
-    dispatch(fetchMessages(this.props.match.params.post_id));
+    dispatch(fetchMessages(post_id));
 
-    window.MessageBus.subscribe('/chat_channel/1', data => {
+    window.MessageBus.subscribe(`/chat_channel/${post_id}`, data => {
       dispatch(addMessage(data));
       this.scrollToBottom('chat-window');
     });
