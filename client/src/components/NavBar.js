@@ -27,7 +27,8 @@ class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state;
-    if (this.props.location.pathname == '/')
+    const noNavItems = ['/', '/login', '/register']
+    if (noNavItems.includes(this.props.location.pathname))
       return null
     else {
       return(
