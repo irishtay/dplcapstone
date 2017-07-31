@@ -62,6 +62,14 @@ class NavBar extends Component {
         </Menu.Item>
 
         <Menu.Item
+          name='Social'
+          active={activeItem === 'users'}
+          onClick={() => this.handleItemClick('/users')}
+        >
+          Social
+        </Menu.Item>
+
+        <Menu.Item
           name='sign-in'
           active={activeItem === 'sign-in'}
           onClick={() => this.handleItemClick('/login')}
