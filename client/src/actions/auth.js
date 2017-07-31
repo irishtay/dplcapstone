@@ -2,18 +2,16 @@ import axios from 'axios';
 import { setFlash } from '../actions/flash';
 
 export const registerUser = (email, password, passwordConfirmation, history) => {
-  
+
   return(dispatch) => {
     axios.post('/api/auth', { email, password, password_confirmation: passwordConfirmation })
       .then( res => {
         let { data: { data: user }, headers } = res;
         dispatch({ type: 'LOGIN', user, headers });
-        history.push('/');
+        history.push('/login');
       })
       .catch( res => {
-
-        // const message = res.response.data.errors.full_messages.join(',');
-        // dispatch(setFlash(message, 'error'));
+        dispatch(setFlash('Registration failed. Maybe that email has been used. Please enter a new one.', 'error'));
     });
   }
 }
@@ -23,31 +21,39 @@ export const handleLogout = (history) => {
   // dispatch a POJO to log the user out of our redux state
   // push the user with history to the /login route
   return(dispatch) => {
-    console.log(history)
     axios.delete('/api/auth/sign_out')
       .then( res => {
         dispatch({ type: 'LOGOUT' });
-        dispatch(setFlash('Logged out successfully!', 'success'));
         history.push('/login');
       })
       .catch( res => {
-        // TODO: handle errors for the client
-        console.log(res);
+        dispatch(setFlash('Did not log out successfully', 'error'));
       });
     }
 }
+
+// const getPath = (bio, usersports) => {
+//   if ( bio.body === null ) {
+//     return '/bio';
+//   } else {
+//     if ( usersports.length === 0 ) {
+//       return '/sports';
+//     } else {
+//       return '/user_sports';
+//     }
+//   }
+// }
 
 export const handleLogin = (email, password, history) => {
   return(dispatch) => {
     axios.post('/api/auth/sign_in', { email, password })
       .then( res => {
-        let { data: { data: user }, headers } = res
+        let { data: { data: user }, headers } = res;
         dispatch({ type: 'LOGIN', user, headers });
         history.push('/bio');
       })
       .catch( res => {
-        // TODO: handle errors for the client
-        console.log(res);
+        dispatch(setFlash('Please register as a new user', 'error'));
       })
   }
 }

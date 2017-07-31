@@ -39,6 +39,27 @@ class Sports extends React.Component {
 
   handleRate = (e, { rating }) => this.setState({ rating })
 
+  instructions = () => {
+    let { usersports } = this.props;
+    if ( usersports.length === 0 ) {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+          style={{ fontFamily: 'Rock Salt' }}>Admin needs to add sports</Header>
+          <br /><br />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+          style={{ fontFamily: 'Rock Salt' }}>Subscribe to sports to add them to your favorites</Header>
+          <br /><br />
+        </div>
+      )
+    }
+  }
+
   sports = () => {
     let { sports } = this.props;
     return sports.map( sport => {
@@ -91,6 +112,7 @@ class Sports extends React.Component {
       <Segment basic>
         <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- All Sports ---</Header>
         <br /><br />
+        { this.instructions() }
         <Link to='/PostForm'>Add Post</Link>
         <Grid>
           <Grid.Row>

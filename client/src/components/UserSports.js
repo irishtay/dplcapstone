@@ -32,9 +32,29 @@ class UserSports extends React.Component {
     this.setState({modalOpen: false})
   }
 
+  instructions = () => {
+    let { usersports } = this.props;
+    if ( usersports.length === 0 ) {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+          style={{ fontFamily: 'Rock Salt' }}>Go to All Sports to add your favorites!</Header>
+          <br /><br />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+          style={{ fontFamily: 'Rock Salt' }}>Click on a sport to view or add posts</Header>
+          <br /><br />
+        </div>
+      )
+    }
+  }
+
 usersports = () => {
     let { usersports } = this.props;
-
     return usersports.map( usersport => {
       let { id, name, imageUrl, skillLevel } = usersport;
       return (
@@ -83,7 +103,7 @@ usersports = () => {
               </Modal>
               <Button basic color='white' >
                 <Icon name='talk' size='middle' />
-                <Link to={`/usersports/${id}`}>ViewPosts</Link>
+                <Link to={`/usersports/${id}`}>View Posts</Link>
               </Button>
             </div>
           </Card.Content>
@@ -100,6 +120,7 @@ usersports = () => {
         <Header textAlign='center'
         style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- Your Favorite Sports ---</Header>
         <br /><br />
+        { this.instructions() }
         <Grid>
           <Grid.Row>
             { this.usersports() }

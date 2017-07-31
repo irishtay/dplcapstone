@@ -30,59 +30,58 @@ class Bio extends Component {
     let { name, age, gender, state, body} = this.props.bio
     return(
 
+    <Segment textAlign='center'>
+        <br />
+      <Grid centered style={styles.theGrid}>
+        <Card style={styles.bio}>
+          <Card.Content>
+            { this.props.photos.length > 0 &&
+              <Image src={this.props.photos[0].url} />
+            }
+          </Card.Content>
+        </Card>
 
-<Segment textAlign='center'>
-    <br />
-  <Grid centered style={styles.theGrid}>
-    <Card style={styles.bio}>
-      <Card.Content>
-        { this.props.photos.length > 0 &&
-          <Image src={this.props.photos[0].url} />
-        }
-      </Card.Content>
-    </Card>
-
-  <Card style={styles.bio} className="rightCard">
-    <br />
-    <Header style={{ fontSize: '40px', fontFamily: 'Rock Salt'}}>
-        {name}
-    </Header>
-      <a>
-        #
-        {body}
-      </a>
+      <Card style={styles.bio} className="rightCard">
         <br />
-        <br />
-      <a className="labels">
-        <Icon name='heterosexual'/>
-        <br />
-        Gender:
-        {gender}
-      </a>
-        <br />
-        <br />
-        <br />
-      <a className="labels">
-        <Icon name='dribble'/>
-        <br />
-        Age:
-        {age}
-      </a>
-        <br/>
-        <br />
-        <br />
-      <a className="labels">
-        <Icon name='marker'/>
-        <br />
-        Location:
-        {state}
-      </a>
-  </Card>
-  </Grid>
-        <br />
-        <br />
-        <Button primary onClick={this.toggleEdit}>Edit Bio</Button>
-</Segment>
+        <Header style={{ fontSize: '40px', fontFamily: 'Rock Salt'}}>
+            {name}
+        </Header>
+          <a>
+            #
+            {body}
+          </a>
+            <br />
+            <br />
+          <a className="labels">
+            <Icon name='heterosexual'/>
+            <br />
+            Gender:
+            {gender}
+          </a>
+            <br />
+            <br />
+            <br />
+          <a className="labels">
+            <Icon name='dribble'/>
+            <br />
+            Age:
+            {age}
+          </a>
+            <br/>
+            <br />
+            <br />
+          <a className="labels">
+            <Icon name='marker'/>
+            <br />
+            Location:
+            {state}
+          </a>
+      </Card>
+      </Grid>
+            <br />
+            <br />
+            <Button primary onClick={this.toggleEdit}>Edit Bio</Button>
+    </Segment>
     )
   }
 
@@ -93,10 +92,35 @@ class Bio extends Component {
     dispatch(updateBio(name, age, st, gender, body));
     this.setState({ edit: false })
   }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
+
+  instructions = () => {
+    let { bio } = this.props;
+    if ( bio.body === null ) {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+            inverted
+            style={{ fontFamily: 'Rock Salt' }}>Add information to your bio!
+          </Header>
+          <br /><br />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Header as='h2' textAlign='center'
+          style={{ fontFamily: 'Rock Salt' }}></Header>
+          <br /><br />
+        </div>
+      )
+    }
+  }
+
   editBio = () => {
     return(
       <Segment inverted textAlign='center'>
@@ -151,7 +175,8 @@ class Bio extends Component {
   render() {
     return(
       <Segment inverted basic>
-        <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '30px' }}>--- My Bio ---</Header>
+        <Header as='h1' textAlign='center' style={{ fontFamily: 'Rock Salt' }}>---- My Bio ----</Header>
+        { this.instructions() }
         { this.state.edit ? this.editBio() : this.displayBio() }
       </Segment>
     );

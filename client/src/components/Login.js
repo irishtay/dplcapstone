@@ -15,8 +15,7 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch, history } = this.props;
-    const { email, password } = this.state;
-
+    const { email, password} = this.state;
     dispatch(handleLogin(email, password, history));
   }
 
@@ -64,6 +63,7 @@ class Login extends Component {
 
         <Segment inverted textAlign='center'>
               <img src='http://i45.tinypic.com/idu9lt.gif'/>
+
         </Segment>
       </Segment>
     );

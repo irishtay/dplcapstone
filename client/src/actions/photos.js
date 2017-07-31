@@ -21,7 +21,6 @@ export const fetchPhotos = () => {
     axios.get('/api/photos')
       .then( res => {
         dispatch({ type: 'SET_PHOTOS', photos: res.data, headers: res.headers });
-        dispatch(setFlash('Photos Loaded!', 'success'));
       })
       .catch( res => {
         dispatch(setFlash('Error Loading Photos!', 'error'));
