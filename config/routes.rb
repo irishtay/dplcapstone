@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       resources :posts
     end
 
+    resources :friends
+
     resources :users do
       resources :posts
     end
@@ -29,6 +31,9 @@ Rails.application.routes.draw do
     resources :posts do
       resources :messages
     end
+
+    # resources :friendships, only: [:create, :update, :destroy]
+    # end
   end
 
   #Do not place any routes below this one

@@ -1,0 +1,13 @@
+.friendsSection {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+.friendsSection span:hover {
+  cursor: pointer;
+  color: blue;
+}

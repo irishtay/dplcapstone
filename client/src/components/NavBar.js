@@ -28,7 +28,7 @@ class NavBar extends Component {
         <div style={{backgroundColor: "#808080"}}>
           <SideBar {...this.state} />
           <Menu pointing secondary>
-            <Button class='menu-button' basic onClick={this.toggleVisibility}>
+            <Button className='menu-button' basic onClick={this.toggleVisibility}>
               <Icon name='content' />
             </Button>
             { this.rightNavs() }
@@ -38,5 +38,6 @@ class NavBar extends Component {
     }
   }
 }
+
 
 export default withRouter(onClickOutside(NavBar));

@@ -1,8 +1,13 @@
-const user = (state = {}, action ) => {
+let initialState = {
+  loggedInUser: ''
+}
+const user = (state = initialState, action ) => {
   switch(action.type) {
     // { type: 'LOGIN', user:  { id: 1, name: 'Jake' } }
     case 'LOGIN':
-      return { ...action.user }
+    console.log(Object.assign({}, state, {loggedInUser: action.user}));
+      return Object.assign({}, state, {loggedInUser: action.user}, action.user);
+
     // { type: 'LOGOUT' }
     case 'LOGOUT':
       return {}

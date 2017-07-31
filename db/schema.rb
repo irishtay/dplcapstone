@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728205045) do
+ActiveRecord::Schema.define(version: 20170730184739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20170728205045) do
     t.text "image_url"
     t.string "state"
     t.index ["user_id"], name: "index_bios_on_user_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "requesting_user_id"
+    t.string "requesting_user_name"
+    t.string "requesting_user_body"
+    t.string "requesting_user_img"
+    t.integer "receiving_user_id"
+    t.string "receiving_user_name"
+    t.string "receiving_user_body"
+    t.string "receiving_user_img"
+    t.boolean "accepted", default: false
   end
 
   create_table "messages", force: :cascade do |t|

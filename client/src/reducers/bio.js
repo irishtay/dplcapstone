@@ -4,6 +4,8 @@ const bio = (state = {}, action) => {
       return action.bio
     case "UPDATE_BIO":
       return action.bio
+    case "UPDATE_BIO_PHOTO":
+      return action.bio
     default:
       return state;
   }
