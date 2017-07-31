@@ -27,14 +27,14 @@ class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state;
-    const noNavItems = ['/', '/login', '/register']
+    const noNavItems = ['/', '/login', '/register', '/home']
     if (noNavItems.includes(this.props.location.pathname))
       return null
     else {
       return(
         <Menu stackable inverted>
         <Menu.Item>
-          <img src={logo} onClick={() => this.handleItemClick('/Home')} />
+          <img src={logo} onClick={() => this.handleItemClick('/home')} />
         </Menu.Item>
 
         <Menu.Item
