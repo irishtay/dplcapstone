@@ -6,6 +6,7 @@ import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
 import SideBar from './SideBar';
 import onClickOutside from 'react-onclickoutside';
+import logo from '../images/a2a-new_720.png'
 
 class NavBar extends Component {
   state = { visible: false }
@@ -17,23 +18,56 @@ class NavBar extends Component {
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
   handleClickOutside = evt => {
-    this.setState({ visible: false })
+    this.setState({ visible: false, activeItem: '' })
+  }
+
+  handleItemClick = (url) => {
+    this.props.history.push(url);
   }
 
   render() {
+    const { activeItem } = this.state;
     if (this.props.location.pathname == '/')
       return null
     else {
-      return (
-        <div style={{backgroundColor: "#808080"}}>
-          <SideBar {...this.state} />
-          <Menu pointing secondary>
-            <Button className='menu-button' basic onClick={this.toggleVisibility}>
-              <Icon name='content' />
-            </Button>
-            { this.rightNavs() }
-          </Menu>
-        </div>
+      return(
+        <Menu stackable inverted>
+        <Menu.Item>
+          <img src={logo} />
+        </Menu.Item>
+
+        <Menu.Item
+          name='My Bio'
+          active={activeItem === 'bio'}
+          onClick={() => this.handleItemClick('/bio')}
+        >
+          My Bio
+        </Menu.Item>
+
+        <Menu.Item
+          name='All Sports'
+          active={activeItem === 'all_sports'}
+          onClick={() => this.handleItemClick('/sports')}
+        >
+          All Sports
+        </Menu.Item>
+
+        <Menu.Item
+          name='Favorite Sports'
+          active={activeItem === 'favorite_sports'}
+          onClick={() => this.handleItemClick('/user_sports')}
+        >
+          Favorite Sports
+        </Menu.Item>
+
+        <Menu.Item
+          name='sign-in'
+          active={activeItem === 'sign-in'}
+          onClick={() => this.handleItemClick('/login')}
+        >
+          Sign-Out
+        </Menu.Item>
+      </Menu>
       )
     }
   }
