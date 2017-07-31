@@ -75,14 +75,14 @@ usersports = () => {
 
             <div className='two choices'>
               <Modal
-                trigger={<Button onClick={ () =>this.handleOpen(usersport)} >Unsubscribe</Button>}
+                trigger={<Button onClick={ () =>this.handleOpen(usersport)} >Unfavorite</Button>}
                 closeIcon='close'
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
               >
                 <Header icon='user x' content="Unsubscribe" />
                 <Modal.Content>
-                  <p>Are you sure you want to unsubscribe from { this.state.activeSport.name }?</p>
+                  <p>Are you sure you want to unfavorite from { this.state.activeSport.name }?</p>
                 </Modal.Content>
                 <Modal.Actions>
                   <Button color='red'
@@ -97,7 +97,7 @@ usersports = () => {
                     onClick={ (e) => this.handleClose(e) }
                     inverted
                   >
-                  <Icon name='user x' /> Unsubscribe
+                  <Icon name='user x' /> Unfavorite
                   </Button>
                 </Modal.Actions>
               </Modal>

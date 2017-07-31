@@ -79,7 +79,7 @@ class Sports extends React.Component {
 
             <div className='two choices'>
               <Modal
-                trigger={<Button onClick={ () =>this.handleOpen(sport)} >Subscribe</Button>}
+                trigger={<Button onClick={ () =>this.handleOpen(sport)} >Favorite</Button>}
                 closeIcon='close'
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
@@ -91,7 +91,7 @@ class Sports extends React.Component {
                 </Modal.Content>
                 <Modal.Actions>
                   <Button color='green' id={this.state.activeSport.id} onClick={ (e) => this.handleClose(e) } inverted >
-                    <Icon name='checkmark' /> Subscribe
+                    <Icon name='checkmark' /> Favorite
                   </Button>
                 </Modal.Actions>
               </Modal>
