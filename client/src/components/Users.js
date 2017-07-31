@@ -1,21 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import axios from 'axios';
 import '../styles/users.css';
->>>>>>> Usertouser
 import {
   Container,
   Icon,
   Grid,
   Header,
   Card,
-<<<<<<< HEAD
-=======
   List,
->>>>>>> Usertouser
   Image,
   Dropdown,
   Divider,
@@ -25,23 +19,6 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { getUsers } from '../actions/users';
-<<<<<<< HEAD
-
-
-class Users extends React.Component {
-
-  componentDidMount() {
-    this.props.dispatch(getUsers());
-  }
-
-  displayUsers = () => {
-    return this.props.users.map(user => {
-      return(
-        <Segment>
-          { user.email }
-        </Segment>
-      );
-=======
 import { getBio } from '../actions/bio';
 
 
@@ -270,21 +247,10 @@ class Users extends React.Component {
 
       </div>
       )
->>>>>>> Usertouser
     });
   }
 
   render() {
-<<<<<<< HEAD
-    return(
-      <Segment basic>
-        <Header as='h1' style={{ color: 'blue' }} textAlign='center'>Users!</Header>
-        <Grid>
-          <Grid.Row>
-            { this.displayUsers() }
-          </Grid.Row>
-        </Grid>
-=======
     console.log(this.props);
     let userEmail;
     if(this.props.loggedInUser){
@@ -302,23 +268,18 @@ class Users extends React.Component {
         <List>
           {this.displayUsers()}
         </List>
->>>>>>> Usertouser
       </Segment>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-<<<<<<< HEAD
-  return { users: state.userList };
-=======
   return {
     loggedInUser: state.user.loggedInUser,
     users: state.userList,
     bio: state.bio,
     photos: state.photos,
    };
->>>>>>> Usertouser
 }
 
 export default connect(mapStateToProps)(Users);
