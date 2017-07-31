@@ -34,7 +34,7 @@ class NavBar extends Component {
       return(
         <Menu stackable inverted>
         <Menu.Item>
-          <img src={logo} />
+          <img src={logo} onClick={() => this.handleItemClick('/Home')} />
         </Menu.Item>
 
         <Menu.Item
