@@ -127,7 +127,8 @@ class Sports extends React.Component {
 const mapStateToProps = (state) => {
   const sports = state.sports;
   const user = state.user;
-  return { sports, user }
+  const usersports = state.usersports;
+  return { sports, user, usersports }
 }
 
 export default connect(mapStateToProps)(Sports);
