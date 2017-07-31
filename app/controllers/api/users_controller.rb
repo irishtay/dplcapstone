@@ -1,20 +1,9 @@
 class Api::UsersController < ApplicationController
 
   def index
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    render json: User.all.order(name: :desc, email: )
-=======
-    render json: User.all.order(email: :desc)
->>>>>>> user to user start
-=======
-    dumbass_users = User.all.order(email: :desc)
-=======
-    dumbass_users = User.all.order(name: :desc)
->>>>>>> updated user_controller
+    myUsers = User.all.order(name: :desc)
     users = []
-    dumbass_users.each do |user|
+    myUsers.each do |user|
       users << {
         id: user.id,
         email: user.email,
@@ -26,7 +15,6 @@ class Api::UsersController < ApplicationController
       }
     end
     render json: users
->>>>>>> Updated user list
   end
 
   def show

@@ -16,7 +16,9 @@ class SideBar extends Component {
             <Link to='/bio'>
               <Menu.Item name='id badge'>
                 <Icon name='id badge' />
-                My Bio
+                {this.props.loggedinUser &&
+                  this.props.loggedInUser.email
+                }
               </Menu.Item>
             </Link>
             <Link to='/sports'>
@@ -56,7 +58,10 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  return {
+    user: state.user,
+    loggedInUser: state.user.loggedInUser
+  }
 }
 
 export default withRouter(connect(mapStateToProps)(SideBar));

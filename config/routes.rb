@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       resources :posts
     end
 
+    resources :friends
+
     resources :users do
       resources :posts
     end

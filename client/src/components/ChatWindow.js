@@ -77,6 +77,7 @@ class ChatWindow extends Component {
   // }
 
   render() {
+    console.log(this.props)
     return(
       <Segment basic>
         <Header as='h2' textAlign='center' style={styles.underline}>Athlete 2 Athlete Chat!</Header>
