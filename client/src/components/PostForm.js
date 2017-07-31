@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getSports } from '../actions/sports';
 import { withRouter } from 'react-router-dom'
 
+
 class PostForm extends React.Component {
     state = { title: '', post_body: '', st: '', sport_id: '', zip: '', streetAddress: '', city: '' }
 
