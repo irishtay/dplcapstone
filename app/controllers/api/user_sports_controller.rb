@@ -31,7 +31,7 @@ before_action :set_user_sport, only: [:destroy]
 
 private
   def set_user_sport
-    @user_sport =  -.find(params[:id])
+    @user_sport = UserSport.find(params[:id])
   end
 
   def user_sport_params
