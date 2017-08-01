@@ -9,7 +9,7 @@ class Home extends Component {
     if(this.props.user) {
       return(
         <Segment basic style={styles.main}>
-        <Link to = '/login'>
+        <Link to = '/bio'>
           <Image
             inline={true}
             style={{verticalAlign: 'middle'}}
@@ -20,7 +20,7 @@ class Home extends Component {
         </Link>
 
         <Container>
-          <Link to='/login'>
+          <Link to='/bio'>
             <Menu.Item name="ENTER"
               style={{ fontFamily: 'Rock Salt',
                 color: 'white',
