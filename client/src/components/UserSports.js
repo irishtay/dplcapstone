@@ -101,10 +101,12 @@ usersports = () => {
                   </Button>
                 </Modal.Actions>
               </Modal>
-              <Button basic color='white' >
-                <Icon name='talk' size='middle' />
-                <Link to={`/usersports/${id}`}>View Posts</Link>
-              </Button>
+              <Link to={`/usersports/${id}`}>
+               <Button basic color='white' >
+                 <Icon name='talk' size='middle' />
+                 View Posts
+               </Button>
+             </Link>
             </div>
           </Card.Content>
           </Card>

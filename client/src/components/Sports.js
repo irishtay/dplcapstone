@@ -45,7 +45,7 @@ class Sports extends React.Component {
       return (
         <div>
           <Header as='h2' textAlign='center'
-          style={{ fontFamily: 'Rock Salt' }}>Admin needs to add sports</Header>
+          style={{ fontFamily: 'Rock Salt' }}></Header>
           <br /><br />
         </div>
       )
@@ -95,10 +95,12 @@ class Sports extends React.Component {
                   </Button>
                 </Modal.Actions>
               </Modal>
-              <Button basic color='white' >
-                <Icon name='talk' size='large' />
-                <Link to={`/sports/${id}`}>ViewPosts</Link>
-              </Button>
+              <Link to={`/sports/${id}`}>
+                 <Button basic color='white' >
+                   <Icon name='talk' size='large' />
+                   View Posts
+                 </Button>
+               </Link>
             </div>
           </Card.Content>
           </Card>
@@ -112,7 +114,7 @@ class Sports extends React.Component {
       <Segment basic>
         <Header textAlign='center' style={{ fontFamily: 'Rock Salt', fontSize: '40px' }}>--- All Sports ---</Header>
         <br /><br />
-        <Link to='/PostForm'>Add Post</Link>
+
         <Grid>
           <Grid.Row>
             { this.sports() }

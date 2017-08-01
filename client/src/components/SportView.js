@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Divider, Header, Image, Container, Table } from 'semantic-ui-react';
+import { Divider, Header, Image, Container, Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSportPosts } from '../actions/posts';
 import SportPost from './SportPost';
@@ -27,9 +27,9 @@ class SportView extends React.Component {
       <Container>
         <br />
         <Header as="h1" style={{ fontFamily: 'Rock Salt' }} textAlign="center">{sport.name}</Header>
-        <Link to='/PostForm'>Add Post </Link>
-        <Link to='/Sports'> All Sports </Link>
-        <Link to='/Posts'> All Posts</Link>
+        <Link to='/PostForm'><Button>Add Post</Button></Link>
+        <Link to='/Sports'><Button>All Sports</Button></Link>
+        <Link to='/Posts'><Button>All Posts</Button></Link>
         { allPosts }
         <Map posts={this.props.posts} />
       </Container>

@@ -8,9 +8,11 @@ import {
   Form,
   Header,
   Input,
-  Divider
+  Divider,
+  Image,
 } from 'semantic-ui-react';
 import axios from 'axios';
+import basketballMapsIcon from '../images/basketball-maps-icon.png';
 
 const Post = ({ text }) => (
   <div>{text}</div>
@@ -51,6 +53,16 @@ class Map extends Component {
     }
   }
 
+  displayMarkers = () => {
+    return this.props.posts.map(post => {
+      return(
+        <div style={styles.marker} lat={post.lat} lng={post.long}>
+          {post.title}
+        </div>
+      );
+    });
+  }
+
   render() {
     const { center, zoom, address } = this.state;
 
@@ -74,13 +86,22 @@ class Map extends Component {
                  )
                })
             }
+            { this.displayMarkers() }
           </GoogleMapReact>
         </Segment>
       </Segment>
     )
   }
+}
 
-
+const styles = {
+  marker: {
+    width: '0',
+    height: '0',
+    borderLeft: '20px solid transparent',
+    borderRight: '20px solid transparent',
+    borderTop: '15px solid #f00',
+  }
 }
 
 export default connect()(Map);
