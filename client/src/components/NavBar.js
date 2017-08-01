@@ -69,6 +69,7 @@ class NavBar extends Component {
           Social
         </Menu.Item>
 
+        <Menu.Menu position='right'>
         <Menu.Item
           name='sign-in'
           active={activeItem === 'sign-in'}
@@ -76,6 +77,7 @@ class NavBar extends Component {
         >
           Sign-Out
         </Menu.Item>
+        </Menu.Menu>
       </Menu>
       )
     }
