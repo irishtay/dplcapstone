@@ -63,6 +63,7 @@ class ChatWindow extends Component {
     axios.post(`/api/posts/${post_id}/messages`, { message: { comment: this.state.newMessage, post_id: post_id }})
       .then( res => {
         this.setState({ newMessage: '' });
+        dispatch({type: "SET_HEADERS", headers: res.headers })
       })
       .catch( error => {
         dispatch(setFlash('Error posting message', 'error'));

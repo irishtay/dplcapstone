@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, Form, Button, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/auth';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
@@ -67,6 +68,11 @@ class Register extends Component {
             <Button type='submit'>Register</Button>
           </Segment>
         </Form>
+        <Form>
+        <Segment basic textAlign='center'>
+        <Link to="/login"><Button onTouchTap={this.clickHandler}>Link Back To Login</Button></Link>
+        </Segment>
+      </Form>
       </Segment>
     );
   }
