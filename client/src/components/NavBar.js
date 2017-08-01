@@ -34,7 +34,7 @@ class NavBar extends Component {
       return(
         <Menu stackable inverted>
         <Menu.Item>
-          <img src={logo} onClick={() => this.handleItemClick('/home')} />
+          <img src={logo} onClick={() => this.handleItemClick('/bio')} />
         </Menu.Item>
 
         <Menu.Item
@@ -69,13 +69,15 @@ class NavBar extends Component {
           Social
         </Menu.Item>
 
-        <Menu.Item
-          name='sign-in'
-          active={activeItem === 'sign-in'}
-          onClick={() => this.handleItemClick('/login')}
-        >
-          Sign-Out
-        </Menu.Item>
+       <Menu.Menu position='right'>
+       <Menu.Item
+         name='sign-in'
+         active={activeItem === 'sign-in'}
+         onClick={() => this.handleItemClick('/login')}
+       >
+         Sign-Out
+       </Menu.Item>
+       </Menu.Menu>
       </Menu>
       )
     }
