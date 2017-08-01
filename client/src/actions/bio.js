@@ -17,7 +17,7 @@ export const updateBio = (name, age, state, gender, body) => {
     axios.put('/api/bio', { bio: { name, age, state, gender, body } })
       .then( res => {
         dispatch({ type: 'UPDATE_BIO', bio: res.data, headers: res.headers })
-        dispatch(setFlash('Bio Updated Successfully!', 'success', { headers: res.headers }));
+        dispatch(setFlash('Bio Updated Successfully!', 'success'));
       })
       .catch( res => {
         dispatch(setFlash('Bio Failed To Update!', 'error'), { headers: res.headers });

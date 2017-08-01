@@ -4,7 +4,7 @@ export const getUsers = () => {
   return (dispatch) => {
     axios.get('/api/users')
       .then(res => {
-        dispatch({ type: 'USERS', users: res.data, headeres: res.headers })
+        dispatch({ type: 'USERS', users: res.data, headers: res.headers })
       })
   }
 }

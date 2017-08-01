@@ -4,7 +4,7 @@ export const getSports = (cb) => {
   return (dispatch) => {
     axios.get('/api/sports')
       .then(res => {
-        dispatch({ type: 'SPORTS', sports: res.data, headeres: res.headers })
+        dispatch({ type: 'SPORTS', sports: res.data, headers: res.headers })
         if ( cb )
           cb();
       })

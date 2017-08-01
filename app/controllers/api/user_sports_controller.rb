@@ -3,7 +3,7 @@ before_action :set_user_sport, only: [:destroy]
 
   def index
     user_sports = []
-    Usersport.where(user_id: current_user.id).each do |user_sport|
+    UserSport.where(user_id: current_user.id).each do |user_sport|
       sport = {
         id: user_sport.id,
         name: user_sport.sport.name,
@@ -17,7 +17,7 @@ before_action :set_user_sport, only: [:destroy]
   end
 
   def create
-    user_sport = Usersport.create(user_id: params[:user_id], sport_id: params[:user_sport][:sport_id], skill_level: params[:user_sport][:skill_level])
+    user_sport = UserSport.create(user_id: params[:user_id], sport_id: params[:user_sport][:sport_id], skill_level: params[:user_sport][:skill_level])
     if user_sport.save
       render json: user_sport
     else
@@ -31,7 +31,7 @@ before_action :set_user_sport, only: [:destroy]
 
 private
   def set_user_sport
-    @user_sport = Usersport.find(params[:id])
+    @user_sport =  -.find(params[:id])
   end
 
   def user_sport_params
