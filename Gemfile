@@ -18,7 +18,7 @@ gem 'will_paginate'
 gem 'api-pagination'
 gem 'geocoder'
 gem 'cloudinary'
-gem 'message_bus', git: 'git@github.com:SamSaffron/message_bus.git'
+gem 'message_bus', git: 'git://github.com/SamSaffron/message_bus.git'
 gem 'dotenv-rails'
 
 group :development, :test do
