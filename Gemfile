@@ -19,11 +19,11 @@ gem 'api-pagination'
 gem 'geocoder'
 gem 'cloudinary'
 gem 'message_bus', git: 'git@github.com:SamSaffron/message_bus.git'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
-  gem 'dotenv-rails'
   gem 'faker'
 end
 
