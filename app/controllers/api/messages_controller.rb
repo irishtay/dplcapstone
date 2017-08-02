@@ -8,7 +8,7 @@ class Api::MessagesController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    message = current_user.message.new(message_params)
+    message = current_user.messages.new(message_params)
     message.post_id = post.id
     if message.save
       MessageBus.publish "/chat_channel/#{message.post_id}", { comment: message.comment }

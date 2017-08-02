@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :user_sports, dependent: :destroy
   has_many :sports, through: :user_sports
   has_many :posts, dependent: :destroy
-  has_many :message, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # to call all your friends
 
